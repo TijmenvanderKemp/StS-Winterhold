@@ -50,6 +50,8 @@
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
   },
+
+
   "winterhold:Firebolt": {
     "NAME": "Firebolt",
     "DESCRIPTION": "Deal !D! winterhold:Fire damage."
@@ -69,5 +71,13 @@
   "winterhold:DefendDestruction": {
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block."
+  },
+  "winterhold:Sparks": {
+    "NAME": "Sparks",
+    "DESCRIPTION": "Deal !D! winterhold:Shock damage to a random enemy."
+  },
+  "winterhold:Hail": {
+    "NAME": "Hail",
+    "DESCRIPTION": "Deal !D! winterhold:Frost damage !M! times."
   }
 }

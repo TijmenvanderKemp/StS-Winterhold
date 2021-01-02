@@ -1,28 +1,19 @@
 package winterhold.cards.destruction
 
-import com.megacrit.cardcrawl.cards.AbstractCard
-import com.megacrit.cardcrawl.cards.AbstractCard.CardType
-import com.megacrit.cardcrawl.cards.AbstractCard.CardColor
-import com.megacrit.cardcrawl.cards.AbstractCard.CardRarity
-import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget
-import com.megacrit.cardcrawl.characters.AbstractPlayer
-import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.actions.common.GainBlockAction
-import com.megacrit.cardcrawl.cards.green.Defend_Green
-import com.megacrit.cardcrawl.localization.CardStrings
+import com.megacrit.cardcrawl.cards.AbstractCard
+import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
-import com.megacrit.cardcrawl.core.Settings
+import com.megacrit.cardcrawl.localization.CardStrings
+import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
-import winterhold.characters.DestructionMage
+import winterhold.cards.AbstractDestructionCard
 
-class DefendDestruction : AbstractCard(
+class DefendDestruction : AbstractDestructionCard(
     ID,
-    cardStrings.NAME,
     IMG,
     1,
-    cardStrings.DESCRIPTION,
     CardType.SKILL,
-    DestructionMage.Enums.DESTRUCTION_COLOR,
     CardRarity.BASIC,
     CardTarget.SELF
 ) {
@@ -43,7 +34,7 @@ class DefendDestruction : AbstractCard(
 
     companion object {
         val ID: String = WinterholdMod.makeID(DefendDestruction::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
+        val IMG: String = WinterholdMod.makeCardPath("Skill.png")
         private val cardStrings: CardStrings = CardCrawlGame.languagePack.getCardStrings(ID)
     }
 
