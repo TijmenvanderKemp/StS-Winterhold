@@ -79,5 +79,9 @@
   "winterhold:Hail": {
     "NAME": "Hail",
     "DESCRIPTION": "Deal !D! winterhold:Frost damage !M! times."
+  },
+  "winterhold:Fireball": {
+    "NAME": "Fireball",
+    "DESCRIPTION": "Deal !M! winterhold:Fire damage to yourself. NL Deal !D! winterhold:Fire damage."
   }
 }
