@@ -56,11 +56,11 @@
   },
   "winterhold:Frostbolt": {
     "NAME": "Frostbolt",
-    "DESCRIPTION": "Deal !D! winterhold:Frost damage."
+    "DESCRIPTION": "Deal !D! winterhold:Frost damage. NL Apply !M! Weak."
   },
   "winterhold:Shockbolt": {
     "NAME": "Shockbolt",
-    "DESCRIPTION": "Deal !D! winterhold:Shock damage."
+    "DESCRIPTION": "Deal !D! winterhold:Shock damage. NL Apply !M! Vulnerable."
   },
   "winterhold:StrikeDestruction": {
     "NAME": "Strike",

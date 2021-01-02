@@ -1,8 +1,6 @@
 package winterhold
 
 import basemod.*
-import winterhold.spelldamage.SpellDamageHelper.amountOfSameTypeDamageInARow
-import winterhold.spelldamage.SpellDamageHelper.comboType
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import basemod.interfaces.EditCardsSubscriber
 import basemod.interfaces.EditRelicsSubscriber
@@ -47,6 +45,7 @@ import com.google.gson.Gson
 import com.megacrit.cardcrawl.core.Settings
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import winterhold.spelldamage.SpellDamageHelper
 import winterhold.util.TextureLoader
 import java.lang.Exception
 import java.nio.charset.StandardCharsets
@@ -267,8 +266,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     }
 
     override fun receiveOnBattleStart(abstractRoom: AbstractRoom) {
-        amountOfSameTypeDamageInARow = 0
-        comboType = null
+        SpellDamageHelper.combo = SpellDamageHelper.Combo(0, null)
     }
 
     companion object {

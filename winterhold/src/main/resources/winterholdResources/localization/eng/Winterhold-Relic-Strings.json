@@ -3,7 +3,7 @@
     "NAME": "Elemental Stone",
     "FLAVOR": "\"Pick one and go with it!\"",
     "DESCRIPTIONS": [
-      "Whenever you #ywinterhold:Combo, heal #b1 HP."
+      "Whenever you kill an non-minion enemy, heal HP equal to your #ywinterhold:Combo, then set your #ywinterhold:Combo to 0."
     ]
   },
   "winterhold:PlaceholderRelic": {

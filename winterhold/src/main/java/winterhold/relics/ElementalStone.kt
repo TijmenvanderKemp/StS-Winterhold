@@ -4,8 +4,10 @@ import basemod.abstracts.CustomRelic
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
+import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.spelldamage.SpellDamageHelper
+import winterhold.util.FatalChecker
 import winterhold.util.TextureLoader
 import java.util.*
 
@@ -15,10 +17,21 @@ class ElementalStone : CustomRelic(ID, IMG, OUTLINE, RelicTier.STARTER, LandingS
         SpellDamageHelper.addObserver(this)
     }
 
+    override fun atBattleStart() {
+        this.counter = 0
+    }
+
     override fun update(o: Observable?, arg: Any?) {
         if (this in AbstractDungeon.player.relics) {
-            flash()
-            AbstractDungeon.player.heal(1)
+            this.counter = SpellDamageHelper.combo.amount
+        }
+    }
+
+    override fun onMonsterDeath(m: AbstractMonster) {
+        if (FatalChecker.isFatal(m)) {
+            AbstractDungeon.player.heal(SpellDamageHelper.combo.amount)
+            SpellDamageHelper.resetCombo()
+            this.counter = SpellDamageHelper.combo.amount
         }
     }
 

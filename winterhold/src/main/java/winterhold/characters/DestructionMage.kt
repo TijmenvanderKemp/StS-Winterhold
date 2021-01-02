@@ -31,7 +31,6 @@ import java.util.*
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
     name, setClass, orbTextures,
     "winterholdResources/images/char/destructionMage/orb/vfx.png", null,
@@ -55,9 +54,18 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
     override fun getLoadout(): CharSelectInfo {
         return CharSelectInfo(
             NAMES[0], TEXT[0],
-            STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, startingRelics,
+            BaseStats.STARTING_HP, BaseStats.MAX_HP, BaseStats.ORB_SLOTS, BaseStats.STARTING_GOLD, BaseStats.CARD_DRAW, this, startingRelics,
             startingDeck, false
         )
+    }
+
+    object BaseStats {
+        const val ENERGY_PER_TURN = 3
+        const val STARTING_HP = 75
+        const val MAX_HP = 75
+        const val STARTING_GOLD = 99
+        const val CARD_DRAW = 5
+        const val ORB_SLOTS = 0
     }
 
     override fun getStartingDeck(): ArrayList<String> {
@@ -166,19 +174,12 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
         return TEXT[2]
     }
 
+
+
     companion object {
         val logger: Logger = LogManager.getLogger(DestructionMage::class.java.name)
 
         // =============== CHARACTER ENUMERATORS  =================
-        // =============== BASE STATS =================
-        const val ENERGY_PER_TURN = 3
-        const val STARTING_HP = 75
-        const val MAX_HP = 75
-        const val STARTING_GOLD = 99
-        const val CARD_DRAW = 9
-        const val ORB_SLOTS = 3
-
-        // =============== /BASE STATS/ =================
         // =============== STRINGS =================
         private val ID = WinterholdMod.makeID("DestructionMage")
         private val characterStrings = CardCrawlGame.languagePack.getCharacterString(ID)
@@ -218,7 +219,7 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
             -10.0f,
             220.0f,
             290.0f,
-            EnergyManager(ENERGY_PER_TURN)
+            EnergyManager(BaseStats.ENERGY_PER_TURN)
         )
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 

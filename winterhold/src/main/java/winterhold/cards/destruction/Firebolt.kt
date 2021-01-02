@@ -12,7 +12,7 @@ import winterhold.cards.AbstractDestructionCard
 import winterhold.spelldamage.SpellDamageType
 
 class Firebolt : AbstractDestructionCard(
-    ID, IMG, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY
+    ID, IMG, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY
 ) {
     // Actions the card should do.
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
@@ -40,7 +40,7 @@ class Firebolt : AbstractDestructionCard(
         val IMG: String = WinterholdMod.makeCardPath("Attack.png")
 
         private const val COST = 1
-        private const val DAMAGE = 5
+        private const val DAMAGE = 6
         private const val UPGRADE_PLUS_DMG = 3
     }
 

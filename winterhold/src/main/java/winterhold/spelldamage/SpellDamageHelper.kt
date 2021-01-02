@@ -1,30 +1,32 @@
 package winterhold.spelldamage
 
 import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import java.util.*
 
 object SpellDamageHelper : Observable() {
-    var comboType: SpellDamageType? = null
-    var amountOfSameTypeDamageInARow = 0
-    private val logger = LogManager.getLogger(SpellDamageHelper::class.java.name)
+    var combo = Combo(0, null)
+    private val logger: Logger = LogManager.getLogger(SpellDamageHelper::class.java.name)
 
+    data class Combo(var amount: Int, var comboType: SpellDamageType?)
 
     fun dealDamage(spellDamageType: SpellDamageType) {
-        if (comboType == spellDamageType) {
-            amountOfSameTypeDamageInARow++
+        if (combo.comboType == spellDamageType) {
+            combo.amount++
         } else {
-            amountOfSameTypeDamageInARow = 1
-            comboType = spellDamageType
+            combo.amount = 1
+            combo.comboType = spellDamageType
         }
         setChanged()
     }
 
-    private fun isCombo() = amountOfSameTypeDamageInARow > 1
-
     fun publishCombo() {
-        if (isCombo()) {
-            logger.info("Publishing Combo")
-            notifyObservers()
-        }
+        logger.info("Publishing $combo")
+        notifyObservers(combo)
+    }
+
+    fun resetCombo() {
+        combo = Combo(0, null)
+        setChanged()
     }
 }

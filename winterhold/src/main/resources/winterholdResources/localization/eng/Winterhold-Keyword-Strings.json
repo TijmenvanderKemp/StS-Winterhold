@@ -3,7 +3,7 @@
     "NAMES": [
       "combo"
     ],
-    "DESCRIPTION": "When you deal damage of a specific type, and the last damage you dealt was of the same type, you Combo."
+    "DESCRIPTION": "Gain 1 #yCombo whenever you deal the same type of damage as the last damage you dealt. Lose all #yCombo when you deal a different type of damage."
   },
   {
     "NAMES": [
