@@ -65,5 +65,9 @@
   "winterhold:StrikeDestruction": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "winterhold:DefendDestruction": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
   }
 }

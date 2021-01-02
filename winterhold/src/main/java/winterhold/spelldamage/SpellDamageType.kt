@@ -16,5 +16,5 @@ enum class SpellDamageType(
     SHOCK("Shock", "Shock", Color(255, 255, 0), SPECIAL_DAMAGE_TYPE);
 
     val fullName: String
-        get() = WinterholdMod.getModID() + ":" + cardDescriptionName
+        get() = WinterholdMod.modID + ":" + cardDescriptionName
 }
