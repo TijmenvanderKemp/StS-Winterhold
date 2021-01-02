@@ -1,6 +1,12 @@
 [
   {
     "NAMES": [
+      "combo"
+    ],
+    "DESCRIPTION": "When you deal damage of a specific type, and the last damage you dealt was of the same type, you Combo."
+  },
+  {
+    "NAMES": [
       "keyword",
       "keywords"
     ],

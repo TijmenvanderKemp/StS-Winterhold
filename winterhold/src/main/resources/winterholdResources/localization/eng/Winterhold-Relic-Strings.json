@@ -1,4 +1,11 @@
 {
+  "winterhold:ElementalStone": {
+    "NAME": "Elemental Stone",
+    "FLAVOR": "\"Pick one and go with it!\"",
+    "DESCRIPTIONS": [
+      "Whenever you #ywinterhold:Combo, heal #b1 HP."
+    ]
+  },
   "winterhold:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",

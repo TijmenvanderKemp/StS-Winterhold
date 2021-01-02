@@ -6,12 +6,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import winterhold.DefaultMod;
-import winterhold.characters.TheDefault;
+import winterhold.WinterholdMod;
+import winterhold.characters.DestructionMage;
 
-import static winterhold.DefaultMod.makeCardPath;
+import static winterhold.WinterholdMod.makeCardPath;
 
-public class DefaultUncommonAttack extends AbstractDynamicCard {
+public class DefaultUncommonAttack extends AbstractWinterholdCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -21,7 +21,7 @@ public class DefaultUncommonAttack extends AbstractDynamicCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DefaultUncommonAttack.class.getSimpleName());
+    public static final String ID = WinterholdMod.makeID(DefaultUncommonAttack.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
     // /TEXT DECLARATION/
@@ -32,7 +32,7 @@ public class DefaultUncommonAttack extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = DestructionMage.Enums.DESTRUCTION_COLOR;
 
     private static final int COST = 1;
     private static final int DAMAGE = 10;

@@ -49,5 +49,21 @@
   "winterhold:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "winterhold:Firebolt": {
+    "NAME": "Firebolt",
+    "DESCRIPTION": "Deal !D! winterhold:Fire damage."
+  },
+  "winterhold:Frostbolt": {
+    "NAME": "Frostbolt",
+    "DESCRIPTION": "Deal !D! winterhold:Frost damage."
+  },
+  "winterhold:Shockbolt": {
+    "NAME": "Shockbolt",
+    "DESCRIPTION": "Deal !D! winterhold:Shock damage."
+  },
+  "winterhold:StrikeDestruction": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
   }
 }

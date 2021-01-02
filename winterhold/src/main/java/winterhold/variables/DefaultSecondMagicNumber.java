@@ -2,9 +2,9 @@ package winterhold.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import winterhold.cards.AbstractDefaultCard;
+import winterhold.cards.AbstractSecondMagicNumberCard;
 
-import static winterhold.DefaultMod.makeID;
+import static winterhold.WinterholdMod.makeID;
 
 public class DefaultSecondMagicNumber extends DynamicVariable {
 
@@ -20,22 +20,22 @@ public class DefaultSecondMagicNumber extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractDefaultCard) card).isDefaultSecondMagicNumberModified;
+        return ((AbstractSecondMagicNumberCard) card).isDefaultSecondMagicNumberModified;
 
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultSecondMagicNumber;
+        return ((AbstractSecondMagicNumberCard) card).defaultSecondMagicNumber;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractDefaultCard) card).defaultBaseSecondMagicNumber;
+        return ((AbstractSecondMagicNumberCard) card).defaultBaseSecondMagicNumber;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractDefaultCard) card).upgradedDefaultSecondMagicNumber;
+        return ((AbstractSecondMagicNumberCard) card).upgradedDefaultSecondMagicNumber;
     }
 }

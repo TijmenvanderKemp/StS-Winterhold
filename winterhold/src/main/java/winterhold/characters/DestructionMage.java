@@ -9,6 +9,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -21,23 +22,33 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import winterhold.DefaultMod;
-import winterhold.cards.*;
+import winterhold.WinterholdMod;
+import winterhold.cards.DefaultCommonAttack;
+import winterhold.cards.destruction.Firebolt;
+import winterhold.cards.destruction.Frostbolt;
+import winterhold.cards.destruction.Shockbolt;
+import winterhold.cards.destruction.StrikeDestruction;
 import winterhold.relics.DefaultClickableRelic;
+import winterhold.relics.ElementalStone;
 import winterhold.relics.PlaceholderRelic;
 import winterhold.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
-import static winterhold.DefaultMod.*;
-import static winterhold.characters.TheDefault.Enums.COLOR_GRAY;
+import static winterhold.WinterholdMod.THE_DEFAULT_CORPSE;
+import static winterhold.WinterholdMod.THE_DEFAULT_SHOULDER_1;
+import static winterhold.WinterholdMod.THE_DEFAULT_SHOULDER_2;
+import static winterhold.WinterholdMod.THE_DEFAULT_SKELETON_ATLAS;
+import static winterhold.WinterholdMod.THE_DEFAULT_SKELETON_JSON;
+import static winterhold.WinterholdMod.makeID;
+import static winterhold.characters.DestructionMage.Enums.DESTRUCTION_COLOR;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
-public class TheDefault extends CustomPlayer {
-    public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
+public class DestructionMage extends CustomPlayer {
+    public static final Logger logger = LogManager.getLogger(DestructionMage.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
     // These are enums for your Characters color (both general color and for the card library) as well as
@@ -48,10 +59,10 @@ public class TheDefault extends CustomPlayer {
 
     public static class Enums {
         @SpireEnum
-        public static AbstractPlayer.PlayerClass THE_DEFAULT;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
-        public static AbstractCard.CardColor COLOR_GRAY;
-        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
+        public static AbstractPlayer.PlayerClass DESTRUCTION_MAGE;
+        @SpireEnum(name = "DEFAULT_DESTRUCTION_COLOR") // These two HAVE to have the same absolutely identical name.
+        public static AbstractCard.CardColor DESTRUCTION_COLOR;
+        @SpireEnum(name = "DEFAULT_DESTRUCTION_COLOR") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
@@ -99,14 +110,14 @@ public class TheDefault extends CustomPlayer {
 
     // =============== CHARACTER CLASS START =================
 
-    public TheDefault(String name, PlayerClass setClass) {
+    public DestructionMage(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
             "winterholdResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
                     "winterholdResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
 
 
-        // =============== TEXTURES, ENERGY, LOADOUT =================  
+        // =============== TEXTURES, ENERGY, LOADOUT =================
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
@@ -118,7 +129,7 @@ public class TheDefault extends CustomPlayer {
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
 
-        // =============== ANIMATIONS =================  
+        // =============== ANIMATIONS =================
 
         loadAnimation(
                 THE_DEFAULT_SKELETON_ATLAS,
@@ -156,37 +167,48 @@ public class TheDefault extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
-        retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultUncommonAttack.ID);
-        retVal.add(DefaultRareAttack.ID);
+        retVal.add(Firebolt.ID);
+        retVal.add(Firebolt.ID);
+        retVal.add(Shockbolt.ID);
+        retVal.add(Shockbolt.ID);
+        retVal.add(Frostbolt.ID);
+        retVal.add(Frostbolt.ID);
+        retVal.add(StrikeDestruction.ID);
+        retVal.add(StrikeDestruction.ID);
 
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultUncommonSkill.ID);
-        retVal.add(DefaultRareSkill.ID);
-
-        retVal.add(DefaultCommonPower.ID);
-        retVal.add(DefaultUncommonPower.ID);
-        retVal.add(DefaultRarePower.ID);
-
-        retVal.add(DefaultAttackWithVariable.ID);
-        retVal.add(DefaultSecondMagicNumberSkill.ID);
-        retVal.add(OrbSkill.ID);
+//        retVal.add(DefaultCommonAttack.ID);
+//        retVal.add(DefaultUncommonAttack.ID);
+//        retVal.add(DefaultRareAttack.ID);
+//
+//        retVal.add(DefaultCommonSkill.ID);
+//        retVal.add(DefaultUncommonSkill.ID);
+//        retVal.add(DefaultRareSkill.ID);
+//
+//        retVal.add(DefaultCommonPower.ID);
+//        retVal.add(DefaultUncommonPower.ID);
+//        retVal.add(DefaultRarePower.ID);
+//
+//        retVal.add(DefaultAttackWithVariable.ID);
+//        retVal.add(DefaultSecondMagicNumberSkill.ID);
+//        retVal.add(OrbSkill.ID);
         return retVal;
     }
 
-    // Starting Relics	
+    // Starting Relics
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
+        retVal.add(ElementalStone.ID);
+//        retVal.add(PlaceholderRelic.ID);
+//        retVal.add(PlaceholderRelic2.ID);
+//        retVal.add(DefaultClickableRelic.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        UnlockTracker.markRelicAsSeen(ElementalStone.ID);
+//        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
+//        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
+//        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;
     }
@@ -215,13 +237,13 @@ public class TheDefault extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return DESTRUCTION_COLOR;
     }
 
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return winterhold.DefaultMod.DEFAULT_GRAY;
+        return WinterholdMod.DEFAULT_GRAY;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -252,20 +274,20 @@ public class TheDefault extends CustomPlayer {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheDefault(name, chosenClass);
+        return new DestructionMage(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return winterhold.DefaultMod.DEFAULT_GRAY;
+        return WinterholdMod.DEFAULT_GRAY;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return winterhold.DefaultMod.DEFAULT_GRAY;
+        return WinterholdMod.DEFAULT_GRAY;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects

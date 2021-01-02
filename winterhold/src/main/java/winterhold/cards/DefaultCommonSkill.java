@@ -1,20 +1,15 @@
 package winterhold.cards;
 
-import basemod.abstracts.CustomCard;
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import winterhold.DefaultMod;
-import winterhold.characters.TheDefault;
-import winterhold.cards.AbstractDynamicCard;
+import winterhold.WinterholdMod;
+import winterhold.characters.DestructionMage;
 
-import static winterhold.DefaultMod.makeCardPath;
+import static winterhold.WinterholdMod.makeCardPath;
 
-public class DefaultCommonSkill extends AbstractDynamicCard {
+public class DefaultCommonSkill extends AbstractWinterholdCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -25,7 +20,7 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DefaultCommonSkill.class.getSimpleName());
+    public static final String ID = WinterholdMod.makeID(DefaultCommonSkill.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
 
     // /TEXT DECLARATION/
@@ -36,7 +31,7 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = DestructionMage.Enums.DESTRUCTION_COLOR;
 
     private static final int COST = 1;
     private static final int BLOCK = 5;

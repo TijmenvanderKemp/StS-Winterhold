@@ -3,11 +3,11 @@ package winterhold.relics;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import winterhold.DefaultMod;
+import winterhold.WinterholdMod;
 import winterhold.util.TextureLoader;
 
-import static winterhold.DefaultMod.makeRelicOutlinePath;
-import static winterhold.DefaultMod.makeRelicPath;
+import static winterhold.WinterholdMod.makeRelicOutlinePath;
+import static winterhold.WinterholdMod.makeRelicPath;
 
 public class PlaceholderRelic extends CustomRelic {
 
@@ -18,7 +18,7 @@ public class PlaceholderRelic extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("PlaceholderRelic");
+    public static final String ID = WinterholdMod.makeID("PlaceholderRelic");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));

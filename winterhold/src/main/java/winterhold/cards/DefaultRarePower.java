@@ -5,13 +5,13 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import winterhold.DefaultMod;
-import winterhold.characters.TheDefault;
+import winterhold.WinterholdMod;
+import winterhold.characters.DestructionMage;
 import winterhold.powers.RarePower;
 
-import static winterhold.DefaultMod.makeCardPath;
+import static winterhold.WinterholdMod.makeCardPath;
 
-public class DefaultRarePower extends AbstractDynamicCard {
+public class DefaultRarePower extends AbstractWinterholdCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -21,7 +21,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DefaultRarePower.class.getSimpleName());
+    public static final String ID = WinterholdMod.makeID(DefaultRarePower.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
     // /TEXT DECLARATION/
@@ -32,7 +32,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
+    public static final CardColor COLOR = DestructionMage.Enums.DESTRUCTION_COLOR;
 
     private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
