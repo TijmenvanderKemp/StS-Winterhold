@@ -1,4 +1,4 @@
-package winterhold.powers
+package winterhold.powers.spelldamagevulnerable
 
 import basemod.interfaces.CloneablePowerInterface
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion
@@ -9,21 +9,18 @@ import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.powers.AbstractPower
-import winterhold.WinterholdMod.Companion.makeID
-import winterhold.WinterholdMod.Companion.makePowerPath
+import winterhold.WinterholdMod
 import winterhold.coloredkeywords.KeywordColorer
-import winterhold.spelldamage.SpellDamageHelper
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
 
-class FrostResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonster: Boolean) : AbstractPower(),
+class ShockVulnerablePower(owner: AbstractCreature?, amount: Int, isSourceMonster: Boolean) : AbstractPower(),
     CloneablePowerInterface {
     private var justApplied = false
     private val isSourceMonster: Boolean
+
     override fun atDamageReceive(damage: Float, damageType: DamageType): Float =
-        if (SpellDamageHelper.inDamagePhaseOfElementalAttack && RESISTANT_TO === SpellDamageHelper.combo.currentDamageType) {
-            damage / 2
-        } else damage
+        damage * VulnerableCalculator.calculateExtraDamageFactor(damageType, VULNERABLE_TO, owner)
 
     override fun atEndOfRound() {
         if (justApplied) {
@@ -38,23 +35,21 @@ class FrostResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonste
     }
 
     override fun updateDescription() {
-        description = KeywordColorer.replaceColoredKeywords(
-            DESCRIPTIONS[0] + "50" + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2]
-        )
+        description = PowerDescriptionMaker.makeDescription(owner, amount, DESCRIPTIONS)
     }
 
     override fun makeCopy(): AbstractPower {
-        return FrostResistancePower(owner, amount, isSourceMonster)
+        return ShockVulnerablePower(owner, amount, isSourceMonster)
     }
 
     companion object {
-        val POWER_ID = makeID(FrostResistancePower::class.java.simpleName)
-        private val RESISTANT_TO = SpellDamageType.FROST
+        val POWER_ID = WinterholdMod.makeID(ShockVulnerablePower::class.java.simpleName)
+        private val VULNERABLE_TO = SpellDamageType.SHOCK
         private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID)
         val NAME = KeywordColorer.replaceColoredKeywords(powerStrings.NAME)
         val DESCRIPTIONS = powerStrings.DESCRIPTIONS
-        private val tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"))
-        private val tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"))
+        private val tex84 = TextureLoader.getTexture(WinterholdMod.makePowerPath("placeholder_power84.png"))
+        private val tex32 = TextureLoader.getTexture(WinterholdMod.makePowerPath("placeholder_power32.png"))
     }
 
     init {

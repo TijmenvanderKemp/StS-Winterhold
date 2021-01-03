@@ -1,6 +1,7 @@
 package winterhold.cards
 
 import basemod.helpers.TooltipInfo
+import winterhold.coloredkeywords.KeywordColorer
 import winterhold.spelldamage.SpellDamageType
 
 abstract class AbstractKeywordColorerCard(
@@ -18,7 +19,7 @@ abstract class AbstractKeywordColorerCard(
     name,
     img,
     cost,
-    replaceColoredKeywords(rawDescription),
+    KeywordColorer.replaceColoredKeywords(rawDescription),
     type,
     color,
     rarity,
@@ -32,17 +33,4 @@ abstract class AbstractKeywordColorerCard(
         return tooltipsForPresentColoredKeywords
     }
 
-    companion object {
-        fun replaceColoredKeywords(text: String): String {
-            var newText = text
-            for (keyword in SpellDamageType.values()) {
-                val color: String = keyword.color.rgb.let { Integer.toHexString(it) }.substring(2)
-                newText = newText.replace(
-                    keyword.fullName,
-                    "[#$color]${keyword.prettyName}[]"
-                )
-            }
-            return newText
-        }
-    }
 }

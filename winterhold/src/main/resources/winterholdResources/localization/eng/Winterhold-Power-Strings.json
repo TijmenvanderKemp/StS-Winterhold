@@ -18,37 +18,52 @@
   "winterhold:FireResistancePower": {
     "NAME": "Resistant to winterhold:Fire",
     "DESCRIPTIONS": [
-      "Target takes 50% less damage from winterhold:Fire attacks."
+      "Receive ",
+      "% less damage from winterhold:Fire Attacks for ",
+      " turn(s)."
     ]
   },
   "winterhold:FrostResistancePower": {
     "NAME": "Resistant to winterhold:Frost",
     "DESCRIPTIONS": [
-      "Target takes 50% less damage from winterhold:Frost attacks."
+      "Receive ",
+      "% less damage from winterhold:Frost Attacks for ",
+      " turn(s)."
     ]
   },
   "winterhold:ShockResistancePower": {
     "NAME": "Resistant to winterhold:Shock",
     "DESCRIPTIONS": [
-      "Target takes 50% less damage from winterhold:Shock attacks."
+      "Receive ",
+      "% less damage from winterhold:Shock Attacks for ",
+      " turn(s)."
     ]
   },
   "winterhold:FireVulnerablePower": {
     "NAME": "Vulnerable to winterhold:Fire",
     "DESCRIPTIONS": [
-      "Target takes 50% more damage from winterhold:Fire attacks."
+      "Receive ",
+      "% more damage from winterhold:Fire Attacks for ",
+      " turn(s).",
+      " (It doesn't stack with Vulnerable)"
     ]
   },
   "winterhold:FrostVulnerablePower": {
     "NAME": "Vulnerable to winterhold:Frost",
     "DESCRIPTIONS": [
-      "Target takes 50% more damage from winterhold:Frost attacks."
+      "Receive ",
+      "% more damage from winterhold:Frost Attacks for ",
+      " turn(s).",
+      " (It doesn't stack with Vulnerable)"
     ]
   },
   "winterhold:ShockVulnerablePower": {
     "NAME": "Vulnerable to winterhold:Shock",
     "DESCRIPTIONS": [
-      "Target takes 50% more damage from winterhold:Shock attacks."
+      "Receive ",
+      "% more damage from winterhold:Shock Attacks for ",
+      " turn(s).",
+      " (It doesn't stack with Vulnerable)"
     ]
   }
 }

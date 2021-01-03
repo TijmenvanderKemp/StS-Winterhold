@@ -5,18 +5,31 @@ import org.apache.logging.log4j.Logger
 import java.util.*
 
 object SpellDamageHelper : Observable() {
-    var combo = Combo(0, null)
+    var combo = Combo()
     private val logger: Logger = LogManager.getLogger(SpellDamageHelper::class.java.name)
     var inDamagePhaseOfElementalAttack = false
 
-    data class Combo(var amount: Int, var comboType: SpellDamageType?)
+    class Combo {
+        var amount: Int = 0
+        var currentDamageType: SpellDamageType? = null
+            set(value) {
+                lastDamageType = currentDamageType
+                field = value
+            }
+        var lastDamageType: SpellDamageType? = null
+            private set
+        val spellWeave: Boolean
+            get() = lastDamageType != currentDamageType
+                    && lastDamageType != null
+                    && currentDamageType != null
+    }
 
     fun dealDamage(spellDamageType: SpellDamageType) {
-        if (combo.comboType == spellDamageType) {
+        if (combo.currentDamageType == spellDamageType) {
             combo.amount++
         } else {
             combo.amount = 1
-            combo.comboType = spellDamageType
+            combo.currentDamageType = spellDamageType
         }
         setChanged()
     }
@@ -27,7 +40,7 @@ object SpellDamageHelper : Observable() {
     }
 
     fun resetCombo() {
-        combo = Combo(0, null)
+        combo = Combo()
         setChanged()
     }
 }

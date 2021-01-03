@@ -83,5 +83,17 @@
   "winterhold:Fireball": {
     "NAME": "Fireball",
     "DESCRIPTION": "Deal !M! winterhold:Fire damage to yourself. NL Deal !D! winterhold:Fire damage."
+  },
+  "winterhold:HoseDown": {
+    "NAME": "Hose Down",
+    "DESCRIPTION": "Apply !M! winterhold:Resistant to winterhold:Fire and !M! Vulnerable to winterhold:Shock. Exhaust."
+  },
+  "winterhold:OilUp": {
+    "NAME": "Oil Up",
+    "DESCRIPTION": "Apply !M! winterhold:Resistant to winterhold:Frost and !M! Vulnerable to winterhold:Fire. Exhaust."
+  },
+  "winterhold:Ground": {
+    "NAME": "Ground",
+    "DESCRIPTION": "Apply !M! winterhold:Resistant to winterhold:Shock and !M! Vulnerable to winterhold:Frost. Exhaust."
   }
 }

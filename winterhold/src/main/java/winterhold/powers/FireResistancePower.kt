@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.powers.AbstractPower
 import winterhold.WinterholdMod.Companion.makeID
 import winterhold.WinterholdMod.Companion.makePowerPath
+import winterhold.coloredkeywords.KeywordColorer
 import winterhold.spelldamage.SpellDamageHelper
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
@@ -20,7 +21,7 @@ class FireResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonster
     private var justApplied = false
     private val isSourceMonster: Boolean
     override fun atDamageReceive(damage: Float, damageType: DamageType): Float =
-        if (SpellDamageHelper.inDamagePhaseOfElementalAttack && RESISTANT_TO === SpellDamageHelper.combo.comboType) {
+        if (SpellDamageHelper.inDamagePhaseOfElementalAttack && RESISTANT_TO === SpellDamageHelper.combo.currentDamageType) {
             damage / 2
         } else damage
 
@@ -37,7 +38,9 @@ class FireResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonster
     }
 
     override fun updateDescription() {
-        description = DESCRIPTIONS[0]
+        description = KeywordColorer.replaceColoredKeywords(
+            DESCRIPTIONS[0] + "50" + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2]
+        )
     }
 
     override fun makeCopy(): AbstractPower {
@@ -48,7 +51,7 @@ class FireResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonster
         val POWER_ID = makeID(FireResistancePower::class.java.simpleName)
         private val RESISTANT_TO = SpellDamageType.FIRE
         private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID)
-        val NAME = powerStrings.NAME
+        val NAME = KeywordColorer.replaceColoredKeywords(powerStrings.NAME)
         val DESCRIPTIONS = powerStrings.DESCRIPTIONS
         private val tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"))
         private val tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"))

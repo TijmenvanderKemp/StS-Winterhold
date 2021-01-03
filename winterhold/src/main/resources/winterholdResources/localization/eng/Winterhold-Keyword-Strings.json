@@ -7,6 +7,12 @@
   },
   {
     "NAMES": [
+      "resistant"
+    ],
+    "DESCRIPTION": "Resistant creatures take #b50% less damage from Attacks."
+  },
+  {
+    "NAMES": [
       "keyword",
       "keywords"
     ],

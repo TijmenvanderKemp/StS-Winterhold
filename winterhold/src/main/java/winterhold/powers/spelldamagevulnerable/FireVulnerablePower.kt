@@ -1,4 +1,4 @@
-package winterhold.powers
+package winterhold.powers.spelldamagevulnerable
 
 import basemod.interfaces.CloneablePowerInterface
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion
@@ -12,18 +12,17 @@ import com.megacrit.cardcrawl.powers.AbstractPower
 import winterhold.WinterholdMod.Companion.makeID
 import winterhold.WinterholdMod.Companion.makePowerPath
 import winterhold.coloredkeywords.KeywordColorer
-import winterhold.spelldamage.SpellDamageHelper
+import winterhold.powers.spelldamagevulnerable.VulnerableCalculator.calculateExtraDamageFactor
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
 
-class FrostResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonster: Boolean) : AbstractPower(),
+class FireVulnerablePower(owner: AbstractCreature?, amount: Int, isSourceMonster: Boolean) : AbstractPower(),
     CloneablePowerInterface {
     private var justApplied = false
     private val isSourceMonster: Boolean
+
     override fun atDamageReceive(damage: Float, damageType: DamageType): Float =
-        if (SpellDamageHelper.inDamagePhaseOfElementalAttack && RESISTANT_TO === SpellDamageHelper.combo.currentDamageType) {
-            damage / 2
-        } else damage
+        damage * calculateExtraDamageFactor(damageType, VULNERABLE_TO, owner)
 
     override fun atEndOfRound() {
         if (justApplied) {
@@ -38,18 +37,16 @@ class FrostResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonste
     }
 
     override fun updateDescription() {
-        description = KeywordColorer.replaceColoredKeywords(
-            DESCRIPTIONS[0] + "50" + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2]
-        )
+        description = PowerDescriptionMaker.makeDescription(owner, amount, DESCRIPTIONS)
     }
 
     override fun makeCopy(): AbstractPower {
-        return FrostResistancePower(owner, amount, isSourceMonster)
+        return FireVulnerablePower(owner, amount, isSourceMonster)
     }
 
     companion object {
-        val POWER_ID = makeID(FrostResistancePower::class.java.simpleName)
-        private val RESISTANT_TO = SpellDamageType.FROST
+        val POWER_ID = makeID(FireVulnerablePower::class.java.simpleName)
+        private val VULNERABLE_TO = SpellDamageType.FIRE
         private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID)
         val NAME = KeywordColorer.replaceColoredKeywords(powerStrings.NAME)
         val DESCRIPTIONS = powerStrings.DESCRIPTIONS
