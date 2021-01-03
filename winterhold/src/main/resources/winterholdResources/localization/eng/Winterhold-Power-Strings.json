@@ -1,10 +1,54 @@
 {
-"winterhold:CommonPower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
-},
-"winterhold:RarePower": {
-        "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
-}
+  "winterhold:CommonPower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": [
+      "You applied #b",
+      " keyword.",
+      " keywords."
+    ]
+  },
+  "winterhold:RarePower": {
+    "NAME": "Placeholder Power",
+    "DESCRIPTIONS": [
+      "At the start of your turn, TOUCH #b",
+      " enemy.",
+      " enemies."
+    ]
+  },
+  "winterhold:FireResistancePower": {
+    "NAME": "Resistant to winterhold:Fire",
+    "DESCRIPTIONS": [
+      "Target takes 50% less damage from winterhold:Fire attacks."
+    ]
+  },
+  "winterhold:FrostResistancePower": {
+    "NAME": "Resistant to winterhold:Frost",
+    "DESCRIPTIONS": [
+      "Target takes 50% less damage from winterhold:Frost attacks."
+    ]
+  },
+  "winterhold:ShockResistancePower": {
+    "NAME": "Resistant to winterhold:Shock",
+    "DESCRIPTIONS": [
+      "Target takes 50% less damage from winterhold:Shock attacks."
+    ]
+  },
+  "winterhold:FireVulnerablePower": {
+    "NAME": "Vulnerable to winterhold:Fire",
+    "DESCRIPTIONS": [
+      "Target takes 50% more damage from winterhold:Fire attacks."
+    ]
+  },
+  "winterhold:FrostVulnerablePower": {
+    "NAME": "Vulnerable to winterhold:Frost",
+    "DESCRIPTIONS": [
+      "Target takes 50% more damage from winterhold:Frost attacks."
+    ]
+  },
+  "winterhold:ShockVulnerablePower": {
+    "NAME": "Vulnerable to winterhold:Shock",
+    "DESCRIPTIONS": [
+      "Target takes 50% more damage from winterhold:Shock attacks."
+    ]
+  }
 }

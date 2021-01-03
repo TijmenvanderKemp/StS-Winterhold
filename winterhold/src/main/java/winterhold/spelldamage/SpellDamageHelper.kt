@@ -7,6 +7,7 @@ import java.util.*
 object SpellDamageHelper : Observable() {
     var combo = Combo(0, null)
     private val logger: Logger = LogManager.getLogger(SpellDamageHelper::class.java.name)
+    var inDamagePhaseOfElementalAttack = false
 
     data class Combo(var amount: Int, var comboType: SpellDamageType?)
 

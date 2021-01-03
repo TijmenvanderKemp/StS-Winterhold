@@ -2,16 +2,11 @@ package winterhold.cards.destruction
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.actions.animations.VFXAction
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
-import com.megacrit.cardcrawl.actions.utility.SFXAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import com.megacrit.cardcrawl.powers.VulnerablePower
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect
-import com.megacrit.cardcrawl.vfx.combat.LightningEffect
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
 import winterhold.cards.AbstractDestructionCard
@@ -54,7 +49,7 @@ class Fireball : AbstractDestructionCard(
         if (!upgraded) {
             upgradeName()
             upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER)
-            upgradeMagicNumber(UPGRADE_PLUS_DAMAGE)
+            upgradeDamage(UPGRADE_PLUS_DAMAGE)
         }
     }
 
