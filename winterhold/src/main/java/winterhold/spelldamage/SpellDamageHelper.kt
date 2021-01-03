@@ -22,15 +22,22 @@ object SpellDamageHelper : Observable() {
             get() = lastDamageType != currentDamageType
                     && lastDamageType != null
                     && currentDamageType != null
+
+        fun push(spellDamageType: SpellDamageType) {
+            if (currentDamageType == spellDamageType) {
+                amount++
+            } else {
+                amount = 1
+            }
+            currentDamageType = spellDamageType
+        }
+
+        override fun toString() =
+            "Combo[amount=$amount, current=$currentDamageType, last=$lastDamageType, weave=$spellWeave]"
     }
 
     fun dealDamage(spellDamageType: SpellDamageType) {
-        if (combo.currentDamageType == spellDamageType) {
-            combo.amount++
-        } else {
-            combo.amount = 1
-            combo.currentDamageType = spellDamageType
-        }
+        combo.push(spellDamageType)
         setChanged()
     }
 

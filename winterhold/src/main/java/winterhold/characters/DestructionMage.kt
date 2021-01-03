@@ -26,7 +26,7 @@ import winterhold.cards.destruction.DefendDestruction
 import winterhold.cards.destruction.Firebolt
 import winterhold.cards.destruction.Frostbolt
 import winterhold.cards.destruction.Shockbolt
-import winterhold.relics.ElementalStone
+import winterhold.relics.FaraldasCharm
 import java.util.*
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
@@ -78,9 +78,9 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     override fun getStartingRelics(): ArrayList<String> {
         val retVal = ArrayList<String>()
-        retVal.add(ElementalStone.ID)
+        retVal.add(FaraldasCharm.ID)
 
-        UnlockTracker.markRelicAsSeen(ElementalStone.ID)
+        UnlockTracker.markRelicAsSeen(FaraldasCharm.ID)
         return retVal
     }
 

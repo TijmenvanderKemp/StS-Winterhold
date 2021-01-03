@@ -13,6 +13,12 @@
   },
   {
     "NAMES": [
+      "spellweave"
+    ],
+    "DESCRIPTION": "Whenever you deal a different type of damage from the last damage you dealt, you #ySpellweave."
+  },
+  {
+    "NAMES": [
       "keyword",
       "keywords"
     ],

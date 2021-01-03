@@ -6,6 +6,13 @@
       "Whenever you kill an non-minion enemy, heal HP equal to your #ywinterhold:Combo, then set your #ywinterhold:Combo to 0."
     ]
   },
+  "winterhold:FaraldasCharm": {
+    "NAME": "Faralda's Charm",
+    "FLAVOR": "\"Destruction spells come in different forms, each useful for various purposes.\"",
+    "DESCRIPTIONS": [
+      "Whenever you #ywinterhold:Spellweave, gain 3 Block."
+    ]
+  },
   "winterhold:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",

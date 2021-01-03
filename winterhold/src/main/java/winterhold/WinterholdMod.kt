@@ -1,53 +1,51 @@
 package winterhold
 
 import basemod.*
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
+import basemod.eventUtil.AddEventParams
+import basemod.helpers.RelicType
 import basemod.interfaces.EditCardsSubscriber
+import basemod.interfaces.EditCharactersSubscriber
+import basemod.interfaces.EditKeywordsSubscriber
 import basemod.interfaces.EditRelicsSubscriber
 import basemod.interfaces.EditStringsSubscriber
-import basemod.interfaces.EditKeywordsSubscriber
-import basemod.interfaces.EditCharactersSubscriber
-import basemod.interfaces.PostInitializeSubscriber
 import basemod.interfaces.OnStartBattleSubscriber
-import winterhold.characters.DestructionMage
-import com.megacrit.cardcrawl.helpers.FontHelper
-import com.evacipated.cardcrawl.modthespire.lib.SpireConfig
-import basemod.eventUtil.AddEventParams
-import winterhold.events.IdentityCrisisEvent
-import com.megacrit.cardcrawl.dungeons.TheCity
-import winterhold.potions.PlaceholderPotion
-import winterhold.relics.ElementalStone
-import winterhold.relics.PlaceholderRelic
-import winterhold.relics.BottledPlaceholderRelic
-import winterhold.relics.DefaultClickableRelic
-import winterhold.relics.PlaceholderRelic2
-import basemod.helpers.RelicType
-import com.megacrit.cardcrawl.unlock.UnlockTracker
-import winterhold.variables.DefaultCustomVariable
-import winterhold.variables.DefaultSecondMagicNumber
-import winterhold.cards.AbstractWinterholdCard
-import com.megacrit.cardcrawl.localization.CardStrings
-import com.megacrit.cardcrawl.localization.PowerStrings
-import com.megacrit.cardcrawl.localization.RelicStrings
-import com.megacrit.cardcrawl.localization.EventStrings
-import com.megacrit.cardcrawl.localization.PotionStrings
-import com.megacrit.cardcrawl.localization.CharacterStrings
-import com.megacrit.cardcrawl.localization.OrbStrings
+import basemod.interfaces.PostInitializeSubscriber
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
-import com.megacrit.cardcrawl.rooms.AbstractRoom
-import com.megacrit.cardcrawl.helpers.CardHelper
-import winterhold.util.IDCheckDontTouchPls
-import java.io.InputStreamReader
-import java.lang.RuntimeException
 import com.evacipated.cardcrawl.mod.stslib.Keyword
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.google.gson.Gson
 import com.megacrit.cardcrawl.core.Settings
+import com.megacrit.cardcrawl.dungeons.TheCity
+import com.megacrit.cardcrawl.helpers.CardHelper
+import com.megacrit.cardcrawl.helpers.FontHelper
+import com.megacrit.cardcrawl.localization.CardStrings
+import com.megacrit.cardcrawl.localization.CharacterStrings
+import com.megacrit.cardcrawl.localization.EventStrings
+import com.megacrit.cardcrawl.localization.OrbStrings
+import com.megacrit.cardcrawl.localization.PotionStrings
+import com.megacrit.cardcrawl.localization.PowerStrings
+import com.megacrit.cardcrawl.localization.RelicStrings
+import com.megacrit.cardcrawl.rooms.AbstractRoom
+import com.megacrit.cardcrawl.unlock.UnlockTracker
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import winterhold.cards.AbstractWinterholdCard
+import winterhold.characters.DestructionMage
+import winterhold.events.IdentityCrisisEvent
+import winterhold.potions.PlaceholderPotion
+import winterhold.relics.BottledPlaceholderRelic
+import winterhold.relics.DefaultClickableRelic
+import winterhold.relics.FaraldasCharm
+import winterhold.relics.PlaceholderRelic
+import winterhold.relics.PlaceholderRelic2
 import winterhold.spelldamage.SpellDamageHelper
+import winterhold.util.IDCheckDontTouchPls
 import winterhold.util.TextureLoader
-import java.lang.Exception
+import winterhold.variables.DefaultCustomVariable
+import winterhold.variables.DefaultSecondMagicNumber
+import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import java.util.*
 
@@ -141,7 +139,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(ElementalStone(), DestructionMage.Enums.DESTRUCTION_COLOR)
+        BaseMod.addRelicToCustomPool(FaraldasCharm(), DestructionMage.Enums.DESTRUCTION_COLOR)
         BaseMod.addRelicToCustomPool(PlaceholderRelic(), DestructionMage.Enums.DESTRUCTION_COLOR)
         BaseMod.addRelicToCustomPool(BottledPlaceholderRelic(), DestructionMage.Enums.DESTRUCTION_COLOR)
         BaseMod.addRelicToCustomPool(DefaultClickableRelic(), DestructionMage.Enums.DESTRUCTION_COLOR)
@@ -266,7 +264,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     }
 
     override fun receiveOnBattleStart(abstractRoom: AbstractRoom) {
-        SpellDamageHelper.combo = SpellDamageHelper.Combo(0, null)
+        SpellDamageHelper.resetCombo()
     }
 
     companion object {
