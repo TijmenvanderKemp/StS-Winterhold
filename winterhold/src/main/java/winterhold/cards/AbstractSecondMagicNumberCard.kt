@@ -19,16 +19,12 @@ abstract class AbstractSecondMagicNumberCard(
     // In this example, we use a custom Abstract Card in order to define a new magic number. From here on out, we can
     // simply use that in our cards, so long as we put "extends AbstractDynamicCard" instead of "extends CustomCard" at the start.
     // In simple terms, it's for things that we don't want to define again and again in every single card we make.
-    @JvmField
     var defaultSecondMagicNumber // Just like magic number, or any number for that matter, we want our regular, modifiable stat
             = 0
-    @JvmField
     var defaultBaseSecondMagicNumber // And our base stat - the number in it's base state. It will reset to that by default.
             = 0
-    @JvmField
     var upgradedDefaultSecondMagicNumber // A boolean to check whether the number has been upgraded or not.
             = false
-    @JvmField
     var isDefaultSecondMagicNumberModified // A boolean to check whether the number has been modified or not, for coloring purposes. (red/green)
             : Boolean
 

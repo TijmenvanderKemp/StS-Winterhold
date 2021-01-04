@@ -1,20 +1,4 @@
 {
-  "winterhold:CommonPower": {
-    "NAME": "Placeholder Power",
-    "DESCRIPTIONS": [
-      "You applied #b",
-      " keyword.",
-      " keywords."
-    ]
-  },
-  "winterhold:RarePower": {
-    "NAME": "Placeholder Power",
-    "DESCRIPTIONS": [
-      "At the start of your turn, TOUCH #b",
-      " enemy.",
-      " enemies."
-    ]
-  },
   "winterhold:FireResistancePower": {
     "NAME": "Resistant to winterhold:Fire",
     "DESCRIPTIONS": [
@@ -64,6 +48,12 @@
       "% more damage from winterhold:Shock Attacks for ",
       " turn(s).",
       " (It doesn't stack with Vulnerable)"
+    ]
+  },
+  "winterhold:GainStrengthWhenComboReachesMultipleOfFivePower": {
+    "NAME": "Elemental Flow",
+    "DESCRIPTIONS": [
+      "Gain !M! strength when your winterhold:Combo reaches a multiple of 5."
     ]
   }
 }

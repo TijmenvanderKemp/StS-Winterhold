@@ -1,7 +1,6 @@
 package winterhold
 
 import basemod.*
-import basemod.eventUtil.AddEventParams
 import basemod.helpers.RelicType
 import basemod.interfaces.EditCardsSubscriber
 import basemod.interfaces.EditCharactersSubscriber
@@ -17,7 +16,6 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.google.gson.Gson
 import com.megacrit.cardcrawl.core.Settings
-import com.megacrit.cardcrawl.dungeons.TheCity
 import com.megacrit.cardcrawl.helpers.CardHelper
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.localization.CardStrings
@@ -28,26 +26,18 @@ import com.megacrit.cardcrawl.localization.PotionStrings
 import com.megacrit.cardcrawl.localization.PowerStrings
 import com.megacrit.cardcrawl.localization.RelicStrings
 import com.megacrit.cardcrawl.rooms.AbstractRoom
-import com.megacrit.cardcrawl.unlock.UnlockTracker
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import winterhold.cards.AbstractWinterholdCard
 import winterhold.characters.DestructionMage
-import winterhold.events.IdentityCrisisEvent
-import winterhold.potions.PlaceholderPotion
-import winterhold.relics.BottledPlaceholderRelic
-import winterhold.relics.DefaultClickableRelic
-import winterhold.relics.FaraldasCharm
-import winterhold.relics.PlaceholderRelic
-import winterhold.relics.PlaceholderRelic2
+import winterhold.relics.AbstractWinterholdRelic
 import winterhold.spelldamage.SpellDamageHelper
 import winterhold.util.IDCheckDontTouchPls
 import winterhold.util.TextureLoader
-import winterhold.variables.DefaultCustomVariable
-import winterhold.variables.DefaultSecondMagicNumber
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import java.util.*
+
 
 @SpireInitializer
 class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
@@ -102,13 +92,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
 
         // =============== EVENTS =================
         // https://github.com/daviscook477/BaseMod/wiki/Custom-Events
-        val eventParams = AddEventParams.Builder(IdentityCrisisEvent.ID, IdentityCrisisEvent::class.java)
-            .dungeonID(TheCity.ID)
-            .playerClass(DestructionMage.Enums.DESTRUCTION_MAGE)
-            .create()
 
-        // Add the event
-        BaseMod.addEvent(eventParams)
 
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options")
@@ -119,10 +103,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     private fun receiveEditPotions() {
         logger.info("Beginning to edit potions")
 
-        BaseMod.addPotion(
-            PlaceholderPotion::class.java, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID,
-            PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, DestructionMage.Enums.DESTRUCTION_MAGE
-        )
+
         logger.info("Done editing potions")
     }
 
@@ -130,27 +111,15 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     // ================ ADD RELICS ===================
     override fun receiveEditRelics() {
         logger.info("Adding relics")
-
-        // Take a look at https://github.com/daviscook477/BaseMod/wiki/AutoAdd
-        // as well as
-        // https://github.com/kiooeht/Bard/blob/e023c4089cc347c60331c78c6415f489d19b6eb9/src/main/java/com/evacipated/cardcrawl/mod/bard/BardMod.java#L319
-        // for reference as to how to turn this into an "Auto-Add" rather than having to list every relic individually.
-        // Of note is that the bard mod uses it's own custom relic class (not dissimilar to our AbstractDefaultCard class for cards) that adds the 'color' field,
-        // in order to automatically differentiate which pool to add the relic too.
-
-        // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(FaraldasCharm(), DestructionMage.Enums.DESTRUCTION_COLOR)
-        BaseMod.addRelicToCustomPool(PlaceholderRelic(), DestructionMage.Enums.DESTRUCTION_COLOR)
-        BaseMod.addRelicToCustomPool(BottledPlaceholderRelic(), DestructionMage.Enums.DESTRUCTION_COLOR)
-        BaseMod.addRelicToCustomPool(DefaultClickableRelic(), DestructionMage.Enums.DESTRUCTION_COLOR)
-
-        // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(PlaceholderRelic2(), RelicType.SHARED)
-
-        // Mark relics as seen - makes it visible in the compendium immediately
-        // If you don't have this it won't be visible in the compendium until you see them in game
-        // (the others are all starters so they're marked as seen in the character file)
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID)
+        AutoAdd("Winterhold")
+            .packageFilter(AbstractWinterholdRelic::class.java)
+            .any(AbstractWinterholdRelic::class.java) { _: AutoAdd.Info, relic: AbstractWinterholdRelic ->
+                if (relic.color == null) {
+                    BaseMod.addRelic(relic, RelicType.SHARED)
+                } else {
+                    BaseMod.addRelicToCustomPool(relic, relic.color)
+                }
+            }
         logger.info("Done adding relics!")
     }
 
@@ -162,8 +131,6 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         // Add the Custom Dynamic Variables
         logger.info("Add variables")
         // Add the Custom Dynamic variables
-        BaseMod.addDynamicVariable(DefaultCustomVariable())
-        BaseMod.addDynamicVariable(DefaultSecondMagicNumber())
         logger.info("Adding cards")
         // Add the cards
         // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash
@@ -178,9 +145,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
 
         // ${project.artifactId} from pom.xml
         AutoAdd("Winterhold")
-            .packageFilter(
-                AbstractWinterholdCard::class.java
-            ) // filters to any class in the same package as AbstractDefaultCard, nested packages included
+            .packageFilter(AbstractWinterholdCard::class.java)
             .setDefaultSeen(true)
             .cards()
 

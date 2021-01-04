@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.cards.AbstractDestructionCard
-import winterhold.powers.ShockResistancePower
+import winterhold.powers.spelldamageresistant.ShockResistancePower
 import winterhold.powers.spelldamagevulnerable.FrostVulnerablePower
 
 class Ground : AbstractDestructionCard(
@@ -24,7 +24,6 @@ class Ground : AbstractDestructionCard(
     }
 
     companion object {
-        @kotlin.jvm.JvmField
         val ID: String = WinterholdMod.makeID(Ground::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Skill.png")
 

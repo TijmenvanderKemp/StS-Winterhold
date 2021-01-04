@@ -33,7 +33,6 @@ class Hail : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.
     }
 
     companion object {
-        @kotlin.jvm.JvmField
         val ID: String = WinterholdMod.makeID(Hail::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Attack.png")
 

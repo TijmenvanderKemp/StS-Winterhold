@@ -1,4 +1,4 @@
-package winterhold.powers
+package winterhold.powers.spelldamageresistant
 
 import basemod.interfaces.CloneablePowerInterface
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion

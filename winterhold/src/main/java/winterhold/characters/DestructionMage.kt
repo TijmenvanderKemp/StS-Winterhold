@@ -21,11 +21,11 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import winterhold.WinterholdMod
-import winterhold.cards.DefaultCommonAttack
 import winterhold.cards.destruction.DefendDestruction
 import winterhold.cards.destruction.Firebolt
 import winterhold.cards.destruction.Frostbolt
 import winterhold.cards.destruction.Shockbolt
+import winterhold.relics.ComboTrackerRelic
 import winterhold.relics.FaraldasCharm
 import java.util.*
 
@@ -78,8 +78,10 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     override fun getStartingRelics(): ArrayList<String> {
         val retVal = ArrayList<String>()
+        retVal.add(ComboTrackerRelic.ID)
         retVal.add(FaraldasCharm.ID)
 
+        UnlockTracker.markRelicAsSeen(ComboTrackerRelic.ID)
         UnlockTracker.markRelicAsSeen(FaraldasCharm.ID)
         return retVal
     }
@@ -125,7 +127,7 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     //Which card should be obtainable from the Match and Keep event?
     override fun getStartCardForEvent(): AbstractCard {
-        return DefaultCommonAttack()
+        return Firebolt()
     }
 
     // The class name as it appears next to your player name in-game

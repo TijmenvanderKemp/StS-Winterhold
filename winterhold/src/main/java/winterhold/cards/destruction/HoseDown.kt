@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.cards.AbstractDestructionCard
-import winterhold.powers.FireResistancePower
+import winterhold.powers.spelldamageresistant.FireResistancePower
 import winterhold.powers.spelldamagevulnerable.ShockVulnerablePower
 
 class HoseDown : AbstractDestructionCard(
@@ -24,7 +24,6 @@ class HoseDown : AbstractDestructionCard(
     }
 
     companion object {
-        @kotlin.jvm.JvmField
         val ID: String = WinterholdMod.makeID(HoseDown::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Skill.png")
 

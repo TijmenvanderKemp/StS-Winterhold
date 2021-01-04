@@ -1,9 +1,11 @@
 {
-  "winterhold:ElementalStone": {
-    "NAME": "Elemental Stone",
-    "FLAVOR": "\"Pick one and go with it!\"",
+  "winterhold:ComboTrackerRelic": {
+    "NAME": "Combo",
+    "FLAVOR": "\"Placeholder relic, this will be custom VFX on the player\"",
     "DESCRIPTIONS": [
-      "Whenever you kill an non-minion enemy, heal HP equal to your #ywinterhold:Combo, then set your #ywinterhold:Combo to 0."
+      "You haven't dealt any damage with spells yet.",
+      "Your last spell dealt {damageType} damage.",
+      "Your last {spellAmount} spells dealt {damageType} damage."
     ]
   },
   "winterhold:FaraldasCharm": {
@@ -11,38 +13,6 @@
     "FLAVOR": "\"Destruction spells come in different forms, each useful for various purposes.\"",
     "DESCRIPTIONS": [
       "Whenever you #ywinterhold:Spellweave, gain 3 Block."
-    ]
-  },
-  "winterhold:PlaceholderRelic": {
-    "NAME": "Placeholder Energy Relic",
-    "FLAVOR": "The snake is a friend.",
-    "DESCRIPTIONS": [
-      "Gain #b1 [E] ."
-    ]
-  },
-  "winterhold:PlaceholderRelic2": {
-    "NAME": "Placeholder Relic 2",
-    "FLAVOR": "You feel stronger.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
-    ]
-  },
-  "winterhold:DefaultClickableRelic": {
-    "NAME": "Right-Clicky Relic",
-    "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
-    "DESCRIPTIONS": [
-      "[#2aecd7]Usable [#2aecd7]once [#2aecd7]per [#2aecd7]turn.[] NL #yEvoke your rightmost Orb.",
-      "YOU ARE MINE!"
-    ]
-  },
-  "winterhold:BottledPlaceholderRelic": {
-    "NAME": "Bottled Placeholder",
-    "FLAVOR": "What is this?",
-    "DESCRIPTIONS": [
-      "Choose a card. Whenever you take play any card, draw the chosen card.",
-      "Whenever you play a card, draw ",
-      ".",
-      "Select a card to bottle for "
     ]
   }
 }

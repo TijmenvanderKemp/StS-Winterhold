@@ -41,7 +41,6 @@ class Frostbolt : AbstractDestructionCard(
     }
 
     companion object {
-        @kotlin.jvm.JvmField
         val ID: String = WinterholdMod.makeID(Frostbolt::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Attack.png")
 

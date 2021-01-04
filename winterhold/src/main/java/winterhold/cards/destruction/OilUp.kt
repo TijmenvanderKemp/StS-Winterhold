@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.cards.AbstractDestructionCard
-import winterhold.powers.FrostResistancePower
+import winterhold.powers.spelldamageresistant.FrostResistancePower
 import winterhold.powers.spelldamagevulnerable.FireVulnerablePower
 
 class OilUp : AbstractDestructionCard(
@@ -24,7 +24,6 @@ class OilUp : AbstractDestructionCard(
     }
 
     companion object {
-        @kotlin.jvm.JvmField
         val ID: String = WinterholdMod.makeID(OilUp::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Skill.png")
 
