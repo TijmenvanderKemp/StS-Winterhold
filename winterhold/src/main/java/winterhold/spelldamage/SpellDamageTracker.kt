@@ -4,9 +4,9 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.util.*
 
-object SpellDamageHelper : Observable() {
+object SpellDamageTracker : Observable() {
     var combo = Combo()
-    private val logger: Logger = LogManager.getLogger(SpellDamageHelper::class.java.name)
+    private val logger: Logger = LogManager.getLogger(SpellDamageTracker::class.java.name)
     var inDamagePhaseOfElementalAttack = false
 
     class Combo {

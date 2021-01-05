@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower
 import winterhold.WinterholdMod.Companion.makeID
 import winterhold.WinterholdMod.Companion.makePowerPath
 import winterhold.coloredkeywords.KeywordColorer
-import winterhold.spelldamage.SpellDamageHelper
+import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.TextureLoader
 import java.util.*
 
@@ -18,7 +18,7 @@ class GainStrengthWhenComboReachesMultipleOfFivePower(owner: AbstractCreature, s
     CloneablePowerInterface, Observer {
 
     init {
-        SpellDamageHelper.addObserver(this)
+        SpellDamageTracker.addObserver(this)
     }
 
     companion object {
@@ -46,7 +46,7 @@ class GainStrengthWhenComboReachesMultipleOfFivePower(owner: AbstractCreature, s
     }
 
     override fun update(o: Observable?, arg: Any?) {
-        if (SpellDamageHelper.combo.amount > 0 && SpellDamageHelper.combo.amount.divisibleBy(5)) {
+        if (SpellDamageTracker.combo.amount > 0 && SpellDamageTracker.combo.amount.divisibleBy(5)) {
             addToBot(
                 ApplyPowerAction(
                     owner,

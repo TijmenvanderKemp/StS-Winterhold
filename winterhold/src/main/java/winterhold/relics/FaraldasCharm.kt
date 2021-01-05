@@ -5,18 +5,18 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import winterhold.WinterholdMod
-import winterhold.spelldamage.SpellDamageHelper
+import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.TextureLoader
 import java.util.*
 
 class FaraldasCharm : CustomRelic(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL), Observer {
 
     init {
-        SpellDamageHelper.addObserver(this)
+        SpellDamageTracker.addObserver(this)
     }
 
     override fun update(o: Observable?, arg: Any?) {
-        if (this in AbstractDungeon.player.relics && SpellDamageHelper.combo.spellWeave) {
+        if (this in AbstractDungeon.player.relics && SpellDamageTracker.combo.spellWeave) {
             flash()
             addToBot(GainBlockAction(AbstractDungeon.player, 3, Settings.FAST_MODE))
         }

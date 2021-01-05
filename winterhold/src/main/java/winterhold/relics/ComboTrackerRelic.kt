@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.helpers.PowerTip
 import winterhold.WinterholdMod
 import winterhold.coloredkeywords.KeywordColorer
-import winterhold.spelldamage.SpellDamageHelper
+import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.TextureLoader
 import java.util.*
 
@@ -12,7 +12,7 @@ import java.util.*
 class ComboTrackerRelic : AbstractWinterholdRelic(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL), Observer {
 
     init {
-        SpellDamageHelper.addObserver(this)
+        SpellDamageTracker.addObserver(this)
     }
 
     override fun atBattleStart() {
@@ -21,7 +21,7 @@ class ComboTrackerRelic : AbstractWinterholdRelic(ID, IMG, OUTLINE, RelicTier.ST
 
     override fun update(o: Observable?, arg: Any?) {
         if (this in AbstractDungeon.player.relics) {
-            this.counter = SpellDamageHelper.combo.amount
+            this.counter = SpellDamageTracker.combo.amount
             fixDescription()
         }
     }
@@ -35,8 +35,8 @@ class ComboTrackerRelic : AbstractWinterholdRelic(ID, IMG, OUTLINE, RelicTier.ST
 
     override fun getUpdatedDescription() = when (counter) {
         -1, 0 -> DESCRIPTIONS[0]
-        1 -> DESCRIPTIONS[1].replace("{damageType}", SpellDamageHelper.combo.currentDamageType?.prettyName ?: "no")
-        else -> DESCRIPTIONS[2].replace("{damageType}", SpellDamageHelper.combo.currentDamageType?.prettyName ?: "no")
+        1 -> DESCRIPTIONS[1].replace("{damageType}", SpellDamageTracker.combo.currentDamageType?.prettyName ?: "no")
+        else -> DESCRIPTIONS[2].replace("{damageType}", SpellDamageTracker.combo.currentDamageType?.prettyName ?: "no")
             .replace("{spellAmount}", counter.toString())
     }.let { KeywordColorer.replaceColoredKeywords(it) }
 

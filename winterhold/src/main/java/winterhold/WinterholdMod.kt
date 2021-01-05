@@ -31,7 +31,7 @@ import org.apache.logging.log4j.Logger
 import winterhold.cards.AbstractWinterholdCard
 import winterhold.characters.DestructionMage
 import winterhold.relics.AbstractWinterholdRelic
-import winterhold.spelldamage.SpellDamageHelper
+import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.IDCheckDontTouchPls
 import winterhold.util.TextureLoader
 import java.io.InputStreamReader
@@ -229,7 +229,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     }
 
     override fun receiveOnBattleStart(abstractRoom: AbstractRoom) {
-        SpellDamageHelper.resetCombo()
+        SpellDamageTracker.resetCombo()
     }
 
     companion object {

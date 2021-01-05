@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower
 import winterhold.WinterholdMod.Companion.makeID
 import winterhold.WinterholdMod.Companion.makePowerPath
 import winterhold.coloredkeywords.KeywordColorer
-import winterhold.spelldamage.SpellDamageHelper
+import winterhold.spelldamage.SpellDamageTracker
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
 
@@ -21,7 +21,7 @@ class FrostResistancePower(owner: AbstractCreature?, amount: Int, isSourceMonste
     private var justApplied = false
     private val isSourceMonster: Boolean
     override fun atDamageReceive(damage: Float, damageType: DamageType): Float =
-        if (SpellDamageHelper.inDamagePhaseOfElementalAttack && RESISTANT_TO === SpellDamageHelper.combo.currentDamageType) {
+        if (SpellDamageTracker.inDamagePhaseOfElementalAttack && RESISTANT_TO === SpellDamageTracker.combo.currentDamageType) {
             damage / 2
         } else damage
 
