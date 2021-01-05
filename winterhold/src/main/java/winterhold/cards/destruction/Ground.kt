@@ -32,6 +32,7 @@ class Ground : AbstractDestructionCard(
     }
 
     init {
+        exhaust = true
         baseMagicNumber = MAGIC_NUMBER
         magicNumber = MAGIC_NUMBER
     }

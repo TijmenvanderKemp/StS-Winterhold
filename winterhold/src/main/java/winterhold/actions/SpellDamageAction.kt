@@ -32,11 +32,13 @@ class SpellDamageAction(
         if (shouldCancelAction() && info.type != DamageType.THORNS) {
             isDone = true
         } else {
-            if (info.type != DamageType.THORNS && (info.owner.isDying || info.owner.halfDead)) {
-                isDone = true
-                return
+            if (duration == 0.1f) {
+                if (info.type != DamageType.THORNS && (info.owner.isDying || info.owner.halfDead)) {
+                    isDone = true
+                    return
+                }
+                AbstractDungeon.effectList.add(FlashAtkImgEffect(target.hb.cX, target.hb.cY, attackEffect, muteSfx))
             }
-            AbstractDungeon.effectList.add(FlashAtkImgEffect(target.hb.cX, target.hb.cY, attackEffect, muteSfx))
             tickDuration()
             if (isDone) {
                 whenDone()

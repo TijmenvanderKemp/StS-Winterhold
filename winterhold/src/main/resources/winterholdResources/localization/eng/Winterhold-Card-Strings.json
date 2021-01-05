@@ -46,5 +46,9 @@
   "winterhold:ElementalFlow": {
     "NAME": "Elemental Flow",
     "DESCRIPTION": "Whenever your Combo reaches a multiple of !M!, gain 1 Strength."
+  },
+  "winterhold:SlowBurn": {
+    "NAME": "Slow Burn",
+    "DESCRIPTION": "Whenever an Attack deals unblocked winterhold:Fire damage, apply !M! winterhold:Singe."
   }
 }

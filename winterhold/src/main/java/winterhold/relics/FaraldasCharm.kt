@@ -1,6 +1,5 @@
 package winterhold.relics
 
-import basemod.abstracts.CustomRelic
 import com.megacrit.cardcrawl.actions.common.GainBlockAction
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -9,7 +8,7 @@ import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.TextureLoader
 import java.util.*
 
-class FaraldasCharm : CustomRelic(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL), Observer {
+class FaraldasCharm : AbstractWinterholdRelic(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL), Observer {
 
     init {
         SpellDamageTracker.addObserver(this)

@@ -53,7 +53,21 @@
   "winterhold:GainStrengthWhenComboReachesMultipleOfFivePower": {
     "NAME": "Elemental Flow",
     "DESCRIPTIONS": [
-      "Gain !M! strength when your winterhold:Combo reaches a multiple of 5."
+      "Gain {strengthAmount} strength when your #yCombo reaches a multiple of 5."
+    ]
+  },
+  "winterhold:SingePower": {
+    "NAME": "Singe",
+    "DESCRIPTIONS": [
+      "At the end of your turn, take #b",
+      " winterhold:Fire damage. Remove when healed.",
+      "At the end of its turn, takes #b"
+    ]
+  },
+  "winterhold:SlowBurnPower": {
+    "NAME": "Slow Burn",
+    "DESCRIPTIONS": [
+      "Whenever an Attack deals unblocked winterhold:Fire damage, apply {singeAmount} #ySinge."
     ]
   }
 }
