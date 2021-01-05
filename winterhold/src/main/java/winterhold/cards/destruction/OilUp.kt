@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
-import winterhold.cards.AbstractDestructionCard
 import winterhold.powers.spelldamageresistant.FrostResistancePower
 import winterhold.powers.spelldamagevulnerable.FireVulnerablePower
 

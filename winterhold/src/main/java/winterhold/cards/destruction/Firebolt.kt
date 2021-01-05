@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
-import winterhold.cards.AbstractDestructionCard
 import winterhold.spelldamage.SpellDamageType
 
 class Firebolt : AbstractDestructionCard(

@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
-import winterhold.cards.AbstractDestructionCard
 import winterhold.spelldamage.SpellDamageType
 
 class Fireball : AbstractDestructionCard(

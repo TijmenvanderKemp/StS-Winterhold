@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.powers.WeakPower
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
-import winterhold.cards.AbstractDestructionCard
 import winterhold.spelldamage.SpellDamageType
 
 class Frostbolt : AbstractDestructionCard(

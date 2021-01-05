@@ -1,5 +1,6 @@
-package winterhold.cards
+package winterhold.cards.destruction
 
+import winterhold.cards.AbstractWinterholdCard
 import winterhold.characters.DestructionMage
 
 abstract class AbstractDestructionCard(

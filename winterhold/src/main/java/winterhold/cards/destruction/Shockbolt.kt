@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.powers.VulnerablePower
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
-import winterhold.cards.AbstractDestructionCard
 import winterhold.spelldamage.SpellDamageType
 
 class Shockbolt : AbstractDestructionCard(

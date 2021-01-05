@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
-import winterhold.cards.AbstractDestructionCard
 import winterhold.powers.GainStrengthWhenComboReachesMultipleOfFivePower
 
 class ElementalFlow : AbstractDestructionCard(ID, IMG, COST, CardType.POWER, CardRarity.RARE, CardTarget.NONE) {
