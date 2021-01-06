@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.powers.WeakPower
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Frostbolt : AbstractDestructionCard(
@@ -54,5 +55,6 @@ class Frostbolt : AbstractDestructionCard(
         baseDamage = DAMAGE
         baseMagicNumber = MAGIC_NUMBER
         magicNumber = MAGIC_NUMBER
+        tags.add(SpellDamageTags.DEALS_FROST_DAMAGE)
     }
 }

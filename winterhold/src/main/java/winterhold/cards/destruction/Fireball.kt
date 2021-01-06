@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.spelldamage.SpellDamageTags.DEALS_FIRE_DAMAGE
 import winterhold.spelldamage.SpellDamageType
 
 class Fireball : AbstractDestructionCard(
@@ -67,5 +68,6 @@ class Fireball : AbstractDestructionCard(
         baseMagicNumber = MAGIC_NUMBER
         magicNumber = MAGIC_NUMBER
         baseDamage = DAMAGE
+        tags.add(DEALS_FIRE_DAMAGE)
     }
 }

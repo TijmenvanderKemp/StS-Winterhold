@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Hail : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY) {
@@ -45,5 +46,6 @@ class Hail : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.
         magicNumber = MAGIC_NUMBER
         baseMagicNumber = MAGIC_NUMBER
         baseDamage = DAMAGE
+        tags.add(SpellDamageTags.DEALS_FROST_DAMAGE)
     }
 }

@@ -8,10 +8,12 @@ object KeywordColorer {
         for (keyword in SpellDamageType.values()) {
             val color: String = keyword.color.rgb.let { Integer.toHexString(it) }.substring(2)
             newText = newText.replace(
-                keyword.fullName,
-                "[#$color]${keyword.prettyName}[]"
+                    keyword.fullName,
+                    "[#$color]${keyword.prettyName}[]"
             )
         }
         return newText
     }
+
+    fun String.colorKeywords(): String = replaceColoredKeywords(this)
 }

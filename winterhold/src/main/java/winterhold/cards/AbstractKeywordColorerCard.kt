@@ -1,7 +1,7 @@
 package winterhold.cards
 
 import basemod.helpers.TooltipInfo
-import winterhold.coloredkeywords.KeywordColorer
+import winterhold.coloredkeywords.KeywordColorer.colorKeywords
 import winterhold.spelldamage.SpellDamageType
 
 abstract class AbstractKeywordColorerCard(
@@ -15,15 +15,15 @@ abstract class AbstractKeywordColorerCard(
     rarity: CardRarity,
     target: CardTarget
 ) : AbstractSecondMagicNumberCard(
-    id,
-    name,
-    img,
-    cost,
-    KeywordColorer.replaceColoredKeywords(rawDescription),
-    type,
-    color,
-    rarity,
-    target
+        id,
+        name.colorKeywords(),
+        img,
+        cost,
+        rawDescription.colorKeywords(),
+        type,
+        color,
+        rarity,
+        target
 ) {
     private val tooltipsForPresentColoredKeywords = SpellDamageType.values()
         .filter { rawDescription.contains(it.fullName) }

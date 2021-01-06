@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageRandomEnemyAction
+import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Sparks : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY) {
@@ -39,5 +40,6 @@ class Sparks : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarit
 
     init {
         baseDamage = DAMAGE
+        tags.add(SpellDamageTags.DEALS_SHOCK_DAMAGE)
     }
 }

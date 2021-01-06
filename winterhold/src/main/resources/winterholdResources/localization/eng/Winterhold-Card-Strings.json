@@ -50,5 +50,21 @@
   "winterhold:SlowBurn": {
     "NAME": "Slow Burn",
     "DESCRIPTION": "Whenever an Attack deals unblocked winterhold:Fire damage, apply !M! winterhold:Singe."
+  },
+  "winterhold:Browse": {
+    "NAME": "Browse",
+    "DESCRIPTION": "Choose winterhold:Fire, winterhold:Frost, or winterhold:Shock. Put a random card from your draw pile that deals that damage into your hand."
+  },
+  "winterhold:FetchFireAttack": {
+    "NAME": "winterhold:Fire",
+    "DESCRIPTION": "Put a random card from your draw pile that deals winterhold:Fire damage into your hand."
+  },
+  "winterhold:FetchFrostAttack": {
+    "NAME": "winterhold:Frost",
+    "DESCRIPTION": "Put a random card from your draw pile that deals winterhold:Frost damage into your hand."
+  },
+  "winterhold:FetchShockAttack": {
+    "NAME": "winterhold:Shock",
+    "DESCRIPTION": "Put a random card from your draw pile that deals winterhold:Shock damage into your hand."
   }
 }

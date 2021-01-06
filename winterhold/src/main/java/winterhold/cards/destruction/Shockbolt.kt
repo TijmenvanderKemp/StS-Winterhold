@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Shockbolt : AbstractDestructionCard(
@@ -59,5 +60,6 @@ class Shockbolt : AbstractDestructionCard(
         baseMagicNumber = MAGIC_NUMBER
         magicNumber = MAGIC_NUMBER
         baseDamage = DAMAGE
+        tags.add(SpellDamageTags.DEALS_SHOCK_DAMAGE)
     }
 }

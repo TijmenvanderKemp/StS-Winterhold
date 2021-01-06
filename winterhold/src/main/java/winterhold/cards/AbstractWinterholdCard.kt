@@ -1,23 +1,25 @@
 package winterhold.cards
 
 import com.megacrit.cardcrawl.core.CardCrawlGame
+import com.megacrit.cardcrawl.localization.CardStrings
 
 abstract class AbstractWinterholdCard(
-    id: String,
-    img: String,
-    cost: Int,
-    type: CardType,
-    color: CardColor,
-    rarity: CardRarity,
-    target: CardTarget
+        id: String,
+        img: String,
+        cost: Int,
+        type: CardType,
+        color: CardColor,
+        rarity: CardRarity,
+        target: CardTarget,
+        val cardStrings: CardStrings = CardCrawlGame.languagePack.getCardStrings(id)
 ) : AbstractKeywordColorerCard(
-    id,
-    CardCrawlGame.languagePack.getCardStrings(id).NAME,
-    img,
-    cost,
-    CardCrawlGame.languagePack.getCardStrings(id).DESCRIPTION,
-    type,
-    color,
-    rarity,
-    target
+        id,
+        cardStrings.NAME,
+        img,
+        cost,
+        cardStrings.DESCRIPTION,
+        type,
+        color,
+        rarity,
+        target
 )
