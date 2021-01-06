@@ -254,7 +254,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
 
         //This is for the in-game mod settings panel.
         private const val MODNAME = "Winterhold"
-        private const val AUTHOR = "Tijmen"
+        private const val AUTHOR = "Code by Tijmen. Art by reina."
         private const val DESCRIPTION = "Play as a mage from the College of Winterhold."
 
         // =============== INPUT TEXTURE LOCATION =================

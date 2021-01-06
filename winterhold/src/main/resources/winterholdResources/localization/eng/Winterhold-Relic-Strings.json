@@ -12,7 +12,7 @@
     "NAME": "Faralda's Charm",
     "FLAVOR": "\"Destruction spells come in different forms, each useful for various purposes.\"",
     "DESCRIPTIONS": [
-      "Whenever you #ywinterhold:Spellweave, gain 3 Block."
+      "Whenever you #ywinterhold:Spellweave, gain 3 #yBlock."
     ]
   }
 }
