@@ -38,7 +38,7 @@
         <dependency>
             <groupId>basemod</groupId>
             <artifactId>basemod</artifactId>
-            <version>5.28.1</version>
+            <version>5.29.0</version>
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/BaseMod.jar</systemPath>-->
