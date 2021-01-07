@@ -82,3 +82,9 @@ $RECYCLE.BIN/
 *.kra
 *.kra~
 *.png~
+/steam/config.json
+/sendToDevs/logs/SlayTheSpire.log
+/steam/README.md
+/sendToDevs/mts_uploader.log
+/winterhold/desktop-1.0.jar.src.zip
+/steam/content/
