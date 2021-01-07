@@ -48,7 +48,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         logger.info("Beginning to edit characters. " + "Add " + DestructionMage.Enums.DESTRUCTION_MAGE.toString())
         BaseMod.addCharacter(
             DestructionMage("the Default", DestructionMage.Enums.DESTRUCTION_MAGE),
-            THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, DestructionMage.Enums.DESTRUCTION_MAGE
+            DESTRUCTION_MAGE_BUTTON, THE_DEFAULT_PORTRAIT, DestructionMage.Enums.DESTRUCTION_MAGE
         )
         receiveEditPotions()
         logger.info("Added " + DestructionMage.Enums.DESTRUCTION_MAGE.toString())
@@ -279,7 +279,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         private const val ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/card_default_gray_orb.png"
 
         // Character assets
-        private const val THE_DEFAULT_BUTTON = "winterholdResources/images/charSelect/DefaultCharacterButton.png"
+        private const val DESTRUCTION_MAGE_BUTTON = "winterholdResources/images/charSelect/DestructionMageButton.png"
         private const val THE_DEFAULT_PORTRAIT = "winterholdResources/images/charSelect/DefaultCharacterPortraitBG.png"
         const val THE_DEFAULT_SHOULDER_1 = "winterholdResources/images/char/destructionMage/shoulder.png"
         const val THE_DEFAULT_SHOULDER_2 = "winterholdResources/images/char/destructionMage/shoulder2.png"
