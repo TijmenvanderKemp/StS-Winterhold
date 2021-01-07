@@ -104,6 +104,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*.psd</exclude>
+                        <exclude>**/*_full.png</exclude>
                     </excludes>
                 </configuration>
             </plugin>
