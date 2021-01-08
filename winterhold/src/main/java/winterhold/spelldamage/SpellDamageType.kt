@@ -12,8 +12,8 @@ enum class SpellDamageType(
     val description: String
 ) {
     FIRE("Fire", "Fire", Color(255, 125, 0), SPECIAL_DAMAGE_TYPE),
-    FROST("Frost", "Frost", Color(52, 193, 215), SPECIAL_DAMAGE_TYPE),
-    SHOCK("Shock", "Shock", Color(255, 170, 255), SPECIAL_DAMAGE_TYPE);
+    FROST("Frost", "Frost", Color(0, 250, 250), SPECIAL_DAMAGE_TYPE),
+    SHOCK("Shock", "Shock", Color(130, 130, 255), SPECIAL_DAMAGE_TYPE);
 
     val fullName: String
         get() = WinterholdMod.modID + ":" + cardDescriptionName
