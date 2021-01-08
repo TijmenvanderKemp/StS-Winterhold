@@ -34,7 +34,7 @@ class Hail : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.
 
     companion object {
         val ID: String = WinterholdMod.makeID(Hail::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
+        val IMG: String = WinterholdMod.makeCardPath(Hail::class.java)
 
         private const val COST = 1
         private const val DAMAGE = 1

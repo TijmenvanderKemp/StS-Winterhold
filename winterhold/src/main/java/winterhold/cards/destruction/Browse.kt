@@ -11,7 +11,7 @@ import winterhold.cards.destruction.browseoptions.FetchShockAttack
 class Browse : AbstractDestructionCard(ID, IMG, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE) {
     companion object {
         val ID: String = WinterholdMod.makeID(Browse::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Skill.png")
+        val IMG: String = WinterholdMod.makeCardPath(Browse::class.java)
 
         private const val COST = 1
         private const val UPGRADED_COST = 0

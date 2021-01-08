@@ -47,7 +47,7 @@ class Shockbolt : AbstractDestructionCard(
 
     companion object {
         val ID: String = WinterholdMod.makeID(Shockbolt::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
+        val IMG: String = WinterholdMod.makeCardPath(Shockbolt::class.java)
 
         private const val COST = 1
         private const val DAMAGE = 3

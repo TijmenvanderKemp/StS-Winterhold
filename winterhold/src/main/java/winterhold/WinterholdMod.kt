@@ -293,34 +293,24 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         const val THE_DEFAULT_SKELETON_JSON = "winterholdResources/images/char/destructionMage/skeleton.json"
 
         // =============== MAKE IMAGE PATHS =================
-        @JvmStatic
         fun makeCardPath(resourcePath: String): String {
-            return modID + "Resources/images/cards/" + resourcePath
+            return "${modID}Resources/images/cards/$resourcePath"
         }
 
-        @JvmStatic
+        fun makeCardPath(clazz: Class<*>): String {
+            return "${modID}Resources/images/cards/${clazz.simpleName}.png"
+        }
+
         fun makeRelicPath(resourcePath: String): String {
-            return modID + "Resources/images/relics/" + resourcePath
+            return "${modID}Resources/images/relics/$resourcePath"
         }
 
-        @JvmStatic
         fun makeRelicOutlinePath(resourcePath: String): String {
-            return modID + "Resources/images/relics/outline/" + resourcePath
+            return "${modID}Resources/images/relics/outline/$resourcePath"
         }
 
-        @JvmStatic
-        fun makeOrbPath(resourcePath: String): String {
-            return modID + "Resources/images/orbs/" + resourcePath
-        }
-
-        @JvmStatic
         fun makePowerPath(resourcePath: String): String {
-            return modID + "Resources/images/powers/" + resourcePath
-        }
-
-        @JvmStatic
-        fun makeEventPath(resourcePath: String): String {
-            return modID + "Resources/images/events/" + resourcePath
+            return "${modID}Resources/images/powers/$resourcePath"
         }
 
         private fun pathCheck() {

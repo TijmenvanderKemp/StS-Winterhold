@@ -20,7 +20,7 @@ class SlowBurn : AbstractDestructionCard(ID, IMG, COST, CardType.POWER, CardRari
 
     companion object {
         val ID: String = WinterholdMod.makeID(SlowBurn::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Power.png")
+        val IMG: String = WinterholdMod.makeCardPath(SlowBurn::class.java)
 
         private const val COST = 2
         private const val MAGIC_NUMBER = 1

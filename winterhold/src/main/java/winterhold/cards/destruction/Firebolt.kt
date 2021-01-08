@@ -35,7 +35,7 @@ class Firebolt : AbstractDestructionCard(
 
     companion object {
         val ID: String = WinterholdMod.makeID(Firebolt::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
+        val IMG: String = WinterholdMod.makeCardPath(Firebolt::class.java)
 
         private const val COST = 1
         private const val DAMAGE = 6
