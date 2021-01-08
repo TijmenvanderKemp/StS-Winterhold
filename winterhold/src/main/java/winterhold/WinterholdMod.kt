@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.localization.OrbStrings
 import com.megacrit.cardcrawl.localization.PotionStrings
 import com.megacrit.cardcrawl.localization.PowerStrings
 import com.megacrit.cardcrawl.localization.RelicStrings
+import com.megacrit.cardcrawl.localization.UIStrings
 import com.megacrit.cardcrawl.rooms.AbstractRoom
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -201,6 +202,12 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         BaseMod.loadCustomStringsFile(
             OrbStrings::class.java,
             modID + "Resources/localization/eng/Winterhold-Orb-Strings.json"
+        )
+
+        // UIStrings
+        BaseMod.loadCustomStringsFile(
+            UIStrings::class.java,
+            modID + "Resources/localization/eng/Winterhold-UI-Strings.json"
         )
         logger.info("Done edittting strings")
     }

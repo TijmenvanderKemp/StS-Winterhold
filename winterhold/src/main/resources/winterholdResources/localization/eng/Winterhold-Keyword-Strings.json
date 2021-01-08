@@ -23,5 +23,11 @@
       "singed"
     ],
     "DESCRIPTION": "Singed creatures take damage at the end of their turn. When they're healed, Singe is removed."
+  },
+  {
+    "NAMES": [
+      "surveil"
+    ],
+    "DESCRIPTION": "Look at the top X cards of your draw pile. You may exhaust any of them."
   }
 ]

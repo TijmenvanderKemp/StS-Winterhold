@@ -66,5 +66,9 @@
   "winterhold:FetchShockAttack": {
     "NAME": "winterhold:Shock",
     "DESCRIPTION": "Put a random card from your draw pile that deals winterhold:Shock damage into your hand."
+  },
+  "winterhold:TomeStack": {
+    "NAME": "Tome Stack",
+    "DESCRIPTION": "winterhold:Surveil !M!. NL Draw 1 card."
   }
 }
