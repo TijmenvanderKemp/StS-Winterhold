@@ -4,7 +4,7 @@
     <groupId>com.tvdkemp.winterhold</groupId>
     <artifactId>Winterhold</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The College of Winterhold</name>
-    <version>0.0.1</version>
+    <version>0.1.0</version>
     <description>Play as a mage from the College of Winterhold.</description>
 
     <properties>
