@@ -48,7 +48,6 @@ class Fireball : AbstractDestructionCard(
     override fun upgrade() {
         if (!upgraded) {
             upgradeName()
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER)
             upgradeDamage(UPGRADE_PLUS_DAMAGE)
         }
     }
@@ -57,11 +56,10 @@ class Fireball : AbstractDestructionCard(
         val ID: String = WinterholdMod.makeID(Fireball::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Attack.png")
 
-        private const val COST = 3
+        private const val COST = 2
         private const val DAMAGE = 36
         private const val UPGRADE_PLUS_DAMAGE = 6
         private const val MAGIC_NUMBER = 6
-        private const val UPGRADE_PLUS_MAGIC_NUMBER = 1
     }
 
     init {
