@@ -74,5 +74,9 @@
   "winterhold:ChainLightning": {
     "NAME": "Chain Lightning",
     "DESCRIPTION": "Deal !D! winterhold:Shock damage to ALL enemies."
+  },
+  "winterhold:FireRune": {
+    "NAME": "Fire Rune",
+    "DESCRIPTION": "Gain !B! Block. The next time you're attacked, deal !D! winterhold:Fire damage to your attacker."
   }
 }

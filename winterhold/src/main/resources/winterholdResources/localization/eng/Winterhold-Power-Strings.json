@@ -69,5 +69,11 @@
     "DESCRIPTIONS": [
       "Whenever an Attack deals unblocked winterhold:Fire damage, apply {singeAmount} #ySinge."
     ]
+  },
+  "winterhold:FireRunePower": {
+    "NAME": "Fire Rune",
+    "DESCRIPTIONS": [
+      "The next time you're attacked, deal #b{damageAmount} winterhold:Fire damage to your attacker."
+    ]
   }
 }
