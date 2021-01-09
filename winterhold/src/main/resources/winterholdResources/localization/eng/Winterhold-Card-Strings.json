@@ -70,5 +70,9 @@
   "winterhold:TomeStack": {
     "NAME": "Tome Stack",
     "DESCRIPTION": "winterhold:Surveil !M!. NL Draw 1 card."
+  },
+  "winterhold:ChainLightning": {
+    "NAME": "Chain Lightning",
+    "DESCRIPTION": "Deal !D! winterhold:Shock damage to ALL enemies."
   }
 }
