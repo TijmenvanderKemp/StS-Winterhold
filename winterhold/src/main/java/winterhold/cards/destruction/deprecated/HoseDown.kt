@@ -1,12 +1,15 @@
-package winterhold.cards.destruction
+package winterhold.cards.destruction.deprecated
 
+import basemod.AutoAdd
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
+import winterhold.cards.destruction.AbstractDestructionCard
 import winterhold.powers.spelldamageresistant.FireResistancePower
 import winterhold.powers.spelldamagevulnerable.ShockVulnerablePower
 
+@AutoAdd.Ignore
 class HoseDown : AbstractDestructionCard(
     ID, IMG, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.ENEMY
 ) {
