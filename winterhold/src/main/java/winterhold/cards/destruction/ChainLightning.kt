@@ -25,7 +25,7 @@ class ChainLightning : AbstractDestructionCard(
         addToBot(
             SpellDamageAllEnemiesAction(
                 p,
-                damage,
+                multiDamage,
                 SpellDamageType.SHOCK,
                 damageTypeForTurn,
                 AbstractGameAction.AttackEffect.NONE
@@ -53,6 +53,7 @@ class ChainLightning : AbstractDestructionCard(
     // /STAT DECLARATION/
     init {
         baseDamage = DAMAGE
+        isMultiDamage = true
         tags.add(SpellDamageTags.DEALS_SHOCK_DAMAGE)
     }
 }
