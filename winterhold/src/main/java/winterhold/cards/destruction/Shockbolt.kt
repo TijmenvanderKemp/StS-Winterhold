@@ -17,7 +17,6 @@ import winterhold.spelldamage.SpellDamageType
 class Shockbolt : AbstractDestructionCard(
     ID, IMG, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY
 ) {
-    // Actions the card should do.
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
             SpellDamageAction(
@@ -37,7 +36,6 @@ class Shockbolt : AbstractDestructionCard(
         )
     }
 
-    //Upgraded stats.
     override fun upgrade() {
         if (!upgraded) {
             upgradeName()
@@ -50,12 +48,11 @@ class Shockbolt : AbstractDestructionCard(
         val IMG: String = WinterholdMod.makeCardPath(Shockbolt::class.java)
 
         private const val COST = 1
-        private const val DAMAGE = 3
-        private const val MAGIC_NUMBER = 2
+        private const val DAMAGE = 5
+        private const val MAGIC_NUMBER = 1
         private const val UPGRADE_PLUS_MAGIC_NUMBER = 1
     }
 
-    // /STAT DECLARATION/
     init {
         baseMagicNumber = MAGIC_NUMBER
         magicNumber = MAGIC_NUMBER

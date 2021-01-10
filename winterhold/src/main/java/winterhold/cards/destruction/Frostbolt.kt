@@ -1,12 +1,10 @@
 package winterhold.cards.destruction
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
+import com.megacrit.cardcrawl.actions.common.GainBlockAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.characters.AbstractPlayer
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import com.megacrit.cardcrawl.powers.WeakPower
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
 import winterhold.spelldamage.SpellDamageTags
@@ -15,9 +13,8 @@ import winterhold.spelldamage.SpellDamageType
 class Frostbolt : AbstractDestructionCard(
     ID, IMG, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY
 ) {
-    // Actions the card should do.
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
-        AbstractDungeon.actionManager.addToBottom(
+        addToBot(
             SpellDamageAction(
                 m,
                 DamageInfo(p, damage, damageTypeForTurn),
@@ -25,18 +22,16 @@ class Frostbolt : AbstractDestructionCard(
                 attackEffect = AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
             )
         )
-        AbstractDungeon.actionManager.addToBottom(
-            ApplyPowerAction(
-                m, p, WeakPower(m, magicNumber, false)
-            )
+        addToBot(
+            GainBlockAction(p, block)
         )
     }
 
-    //Upgraded stats.
     override fun upgrade() {
         if (!upgraded) {
             upgradeName()
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER)
+            upgradeDamage(UPGRADE_PLUS_DAMAGE)
+            upgradeBlock(UPGRADE_PLUS_BLOCK)
         }
     }
 
@@ -46,15 +41,15 @@ class Frostbolt : AbstractDestructionCard(
 
         private const val COST = 1
         private const val DAMAGE = 5
-        private const val MAGIC_NUMBER = 1
-        private const val UPGRADE_PLUS_MAGIC_NUMBER = 1
+        private const val UPGRADE_PLUS_DAMAGE = 2
+        private const val BLOCK = 5
+        private const val UPGRADE_PLUS_BLOCK = 2
     }
 
     // /STAT DECLARATION/
     init {
         baseDamage = DAMAGE
-        baseMagicNumber = MAGIC_NUMBER
-        magicNumber = MAGIC_NUMBER
+        baseBlock = BLOCK
         tags.add(SpellDamageTags.DEALS_FROST_DAMAGE)
     }
 }

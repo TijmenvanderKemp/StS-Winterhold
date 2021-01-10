@@ -5,7 +5,7 @@
   },
   "winterhold:Frostbolt": {
     "NAME": "Frostbolt",
-    "DESCRIPTION": "Deal !D! winterhold:Frost damage. NL Apply !M! Weak."
+    "DESCRIPTION": "Deal !D! winterhold:Frost damage. NL Gain !B! Block."
   },
   "winterhold:Shockbolt": {
     "NAME": "Shockbolt",
