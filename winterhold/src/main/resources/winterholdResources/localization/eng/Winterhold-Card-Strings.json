@@ -21,7 +21,7 @@
   },
   "winterhold:Sparks": {
     "NAME": "Sparks",
-    "DESCRIPTION": "Deal !D! winterhold:Shock damage to a random enemy."
+    "DESCRIPTION": "Deal !D! winterhold:Shock damage. winterhold:Combo !C!: Apply !M! Vulnerable."
   },
   "winterhold:Hail": {
     "NAME": "Hail",
