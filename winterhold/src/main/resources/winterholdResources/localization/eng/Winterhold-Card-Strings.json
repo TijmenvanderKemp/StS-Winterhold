@@ -86,5 +86,10 @@
   "winterhold:ColdBurn": {
     "NAME": "Cold Burn",
     "DESCRIPTION": "Deal !D! winterhold:Frost damage. Deal !D! winterhold:Fire damage."
+  },
+  "winterhold:Hypothermia": {
+    "NAME": "Hypothermia",
+    "DESCRIPTION": "Gain !B! Block. NL Shuffle a *Void into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Shuffle a *Void into your discard pile."
   }
 }

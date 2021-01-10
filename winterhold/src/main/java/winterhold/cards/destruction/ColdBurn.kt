@@ -55,5 +55,6 @@ class ColdBurn : AbstractDestructionCard(
     init {
         baseDamage = DAMAGE
         tags.add(SpellDamageTags.DEALS_FROST_DAMAGE)
+        tags.add(SpellDamageTags.DEALS_FIRE_DAMAGE)
     }
 }
