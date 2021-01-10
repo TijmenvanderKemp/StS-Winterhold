@@ -31,6 +31,7 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import winterhold.cards.AbstractWinterholdCard
 import winterhold.characters.DestructionMage
+import winterhold.dynamicvariables.ComboVariable
 import winterhold.relics.AbstractWinterholdRelic
 import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.IDCheckDontTouchPls
@@ -129,9 +130,8 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     override fun receiveEditCards() {
         logger.info("Adding variables")
         pathCheck()
-        // Add the Custom Dynamic Variables
         logger.info("Add variables")
-        // Add the Custom Dynamic variables
+        BaseMod.addDynamicVariable(ComboVariable())
         logger.info("Adding cards")
         // Add the cards
         // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash

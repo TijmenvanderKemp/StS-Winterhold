@@ -96,5 +96,9 @@
     "NAME": "Conductivity",
     "DESCRIPTION": "This turn, all winterhold:Shock damage ignores Block.",
     "UPGRADE_DESCRIPTION": "This turn, all winterhold:Shock damage ignores Block and is increased by 2."
+  },
+  "winterhold:Ignite": {
+    "NAME": "Ignite",
+    "DESCRIPTION": "Deal !D! winterhold:Fire damage. winterhold:Combo !C!: Deal !D! winterhold:Fire damage again."
   }
 }

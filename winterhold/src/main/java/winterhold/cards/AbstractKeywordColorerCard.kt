@@ -14,16 +14,16 @@ abstract class AbstractKeywordColorerCard(
     color: CardColor,
     rarity: CardRarity,
     target: CardTarget
-) : AbstractSecondMagicNumberCard(
-        id,
-        name.colorKeywords(),
-        img,
-        cost,
-        rawDescription.colorKeywords(),
-        type,
-        color,
-        rarity,
-        target
+) : AbstractComboRequirementCard(
+    id,
+    name.colorKeywords(),
+    img,
+    cost,
+    rawDescription.colorKeywords(),
+    type,
+    color,
+    rarity,
+    target
 ) {
     private val tooltipsForPresentColoredKeywords = SpellDamageType.values()
         .filter { rawDescription.contains(it.fullName) }
