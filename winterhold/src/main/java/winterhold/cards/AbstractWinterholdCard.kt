@@ -22,4 +22,9 @@ abstract class AbstractWinterholdCard(
         color,
         rarity,
         target
-)
+) {
+        fun useUpgradeDescription() {
+                rawDescription = cardStrings.UPGRADE_DESCRIPTION
+                initializeDescription()
+        }
+}

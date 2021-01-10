@@ -2,22 +2,19 @@ package winterhold.powers
 
 import basemod.interfaces.CloneablePowerInterface
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
-import com.megacrit.cardcrawl.cards.DamageInfo
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import winterhold.WinterholdMod.Companion.makeID
 import winterhold.WinterholdMod.Companion.makePowerPath
 import winterhold.coloredkeywords.KeywordColorer
-import winterhold.spelldamage.SpellDamageTracker
-import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
 
-class SlowBurnPower(owner: AbstractCreature, applySingeAmount: Int) : AbstractWinterholdPower(),
+class ConductivityPower(owner: AbstractCreature, damageBoost: Int) : AbstractWinterholdPower(),
     CloneablePowerInterface {
 
     companion object {
-        val POWER_ID = makeID(SlowBurnPower::class.java.simpleName)
+        val POWER_ID = makeID(ConductivityPower::class.java.simpleName)
         private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID)
         val NAME = KeywordColorer.replaceColoredKeywords(powerStrings.NAME)
         val DESCRIPTIONS = powerStrings.DESCRIPTIONS
@@ -29,7 +26,7 @@ class SlowBurnPower(owner: AbstractCreature, applySingeAmount: Int) : AbstractWi
         name = NAME
         ID = POWER_ID
         this.owner = owner
-        this.amount = applySingeAmount
+        this.amount = damageBoost
         type = PowerType.BUFF
         region128 = AtlasRegion(tex84, 0, 0, 84, 84)
         region48 = AtlasRegion(tex32, 0, 0, 32, 32)
@@ -37,26 +34,23 @@ class SlowBurnPower(owner: AbstractCreature, applySingeAmount: Int) : AbstractWi
     }
 
     override fun updateDescription() {
-        setDescription(powerStrings.DESCRIPTIONS[0])
-    }
-
-    override fun onAttack(info: DamageInfo, damageAmount: Int, target: AbstractCreature?) {
-        if (damageAmount > 0
-            && info.type == DamageInfo.DamageType.NORMAL
-            && SpellDamageTracker.inDamagePhaseOfElementalAttack
-            && SpellDamageTracker.combo.currentDamageType == SpellDamageType.FIRE
-            && target != null
-        ) {
-            addToBot(
-                ApplyPowerAction(
-                    target,
-                    owner,
-                    SingePower(target, owner, amount),
-                    amount
-                )
-            )
+        if (amount < 1) {
+            setDescription(powerStrings.DESCRIPTIONS[0])
+        } else {
+            setDescription(powerStrings.DESCRIPTIONS[1])
         }
     }
 
-    override fun makeCopy() = SlowBurnPower(owner, amount)
+    override fun makeCopy() = ConductivityPower(owner, amount)
+
+    override fun atEndOfTurn(isPlayer: Boolean) {
+        addToBot(RemoveSpecificPowerAction(owner, owner, POWER_ID))
+    }
+
+    override fun stackPower(stackAmount: Int) {
+        super.stackPower(stackAmount)
+        if (amount > 2) {
+            amount = 2
+        }
+    }
 }

@@ -24,8 +24,7 @@ class Hypothermia : AbstractDestructionCard(
 
     override fun upgrade() {
         if (!upgraded) {
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION
-            initializeDescription()
+            useUpgradeDescription()
             upgradeName()
             upgradeBlock(UPGRADE_PLUS_BLOCK)
         }

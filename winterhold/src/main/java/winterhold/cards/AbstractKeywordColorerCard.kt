@@ -33,4 +33,8 @@ abstract class AbstractKeywordColorerCard(
         return tooltipsForPresentColoredKeywords
     }
 
+    override fun initializeDescription() {
+        rawDescription = rawDescription.colorKeywords()
+        super.initializeDescription()
+    }
 }

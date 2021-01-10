@@ -6,15 +6,13 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
-import com.megacrit.cardcrawl.powers.AbstractPower
 import org.apache.logging.log4j.LogManager
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
-import winterhold.coloredkeywords.KeywordColorer.colorKeywords
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
 
-class FireRunePower(owner: AbstractCreature, damageAmount: Int) : AbstractPower() {
+class FireRunePower(owner: AbstractCreature, damageAmount: Int) : AbstractWinterholdPower() {
 
     companion object {
         private val logger = LogManager.getLogger(FireRunePower::class.java.name)
@@ -37,9 +35,7 @@ class FireRunePower(owner: AbstractCreature, damageAmount: Int) : AbstractPower(
     }
 
     override fun updateDescription() {
-        description = DESCRIPTIONS[0]
-            .replace("{damageAmount}", amount.toString())
-            .colorKeywords()
+        setDescription(DESCRIPTIONS[0])
     }
 
     override fun stackPower(stackAmount: Int) {

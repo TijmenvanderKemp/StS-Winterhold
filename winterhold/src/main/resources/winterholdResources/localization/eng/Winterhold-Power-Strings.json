@@ -67,19 +67,26 @@
   "winterhold:SlowBurnPower": {
     "NAME": "Slow Burn",
     "DESCRIPTIONS": [
-      "Whenever an Attack deals unblocked winterhold:Fire damage, apply {singeAmount} #ySinge."
+      "Whenever an Attack deals unblocked winterhold:Fire damage, apply #b{amount} #ySinge."
     ]
   },
   "winterhold:FireRunePower": {
     "NAME": "Fire Rune",
     "DESCRIPTIONS": [
-      "The next time you're attacked, deal #b{damageAmount} winterhold:Fire damage to your attacker."
+      "The next time you're attacked, deal #b{amount} winterhold:Fire damage to your attacker."
     ]
   },
   "winterhold:SimonSaysPower": {
     "NAME": "Simon Says",
     "DESCRIPTIONS": [
       "If you deal {damageType} next, gain {strengthAmount} #yStrength. If you don't, lose all #yStrength."
+    ]
+  },
+  "winterhold:ConductivityPower": {
+    "NAME": "Conductivity",
+    "DESCRIPTIONS": [
+      "This turn, all winterhold:Shock damage ignores Block.",
+      "This turn, all winterhold:Shock damage ignores Block and is increased by #b{amount}."
     ]
   }
 }

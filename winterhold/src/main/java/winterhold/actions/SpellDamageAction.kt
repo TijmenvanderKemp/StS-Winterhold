@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect
+import winterhold.spelldamage.SpellDamageInfoCreator
 import winterhold.spelldamage.SpellDamageTracker
 import winterhold.spelldamage.SpellDamageType
 
@@ -57,7 +58,7 @@ class SpellDamageAction(
 
         SpellDamageTracker.dealDamage(spellDamageType)
         SpellDamageTracker.inDamagePhaseOfElementalAttack = true
-        target.damage(info)
+        target.damage(SpellDamageInfoCreator.createDamageInfo(info, spellDamageType))
         SpellDamageTracker.inDamagePhaseOfElementalAttack = false
         SpellDamageTracker.publishCombo()
 

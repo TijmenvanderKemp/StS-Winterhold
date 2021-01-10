@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
+import winterhold.spelldamage.SpellDamageInfoCreator;
 import winterhold.spelldamage.SpellDamageTracker;
 import winterhold.spelldamage.SpellDamageType;
 
@@ -97,7 +98,7 @@ public class SpellDamageAllEnemiesAction
                     }
                     SpellDamageTracker.INSTANCE.dealDamage(spellDamageType);
                     SpellDamageTracker.INSTANCE.setInDamagePhaseOfElementalAttack(true);
-                    monster.damage(new DamageInfo(this.source, this.damage[i], this.damageType));
+                    monster.damage(SpellDamageInfoCreator.INSTANCE.createDamageInfo(this.source, this.damage[i], this.damageType, spellDamageType));
                     SpellDamageTracker.INSTANCE.setInDamagePhaseOfElementalAttack(false);
                     SpellDamageTracker.INSTANCE.publishCombo();
                 }
