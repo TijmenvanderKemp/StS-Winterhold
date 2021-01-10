@@ -100,5 +100,9 @@
   "winterhold:Ignite": {
     "NAME": "Ignite",
     "DESCRIPTION": "Deal !D! winterhold:Fire damage. winterhold:Combo !C!: Deal !D! winterhold:Fire damage again."
+  },
+  "winterhold:Frostbite": {
+    "NAME": "Frostbite",
+    "DESCRIPTION": "Deal !D! winterhold:Frost damage. winterhold:Combo !C!: Apply !M! Weak."
   }
 }
