@@ -82,5 +82,9 @@
   "winterhold:SimonSays": {
     "NAME": "Simon Says",
     "DESCRIPTION": "Each time you deal spell damage, this power chooses winterhold:Fire, winterhold:Frost, or winterhold:Shock randomly. If the next damage you deal is of that type, gain 1 Strength. If not, lose all Strength."
+  },
+  "winterhold:ColdBurn": {
+    "NAME": "Cold Burn",
+    "DESCRIPTION": "Deal !D! winterhold:Frost damage. Deal !D! winterhold:Fire damage."
   }
 }
