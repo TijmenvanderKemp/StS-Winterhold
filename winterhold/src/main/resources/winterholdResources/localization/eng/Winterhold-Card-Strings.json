@@ -78,5 +78,9 @@
   "winterhold:FireRune": {
     "NAME": "Fire Rune",
     "DESCRIPTION": "Gain !B! Block. The next time you're attacked, deal !D! winterhold:Fire damage to your attacker."
+  },
+  "winterhold:SimonSays": {
+    "NAME": "Simon Says",
+    "DESCRIPTION": "Each time you deal spell damage, this power chooses winterhold:Fire, winterhold:Frost, or winterhold:Shock randomly. If the next damage you deal is of that type, gain 1 Strength. If not, lose all Strength."
   }
 }

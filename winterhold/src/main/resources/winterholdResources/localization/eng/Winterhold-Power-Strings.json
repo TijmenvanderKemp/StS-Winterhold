@@ -75,5 +75,11 @@
     "DESCRIPTIONS": [
       "The next time you're attacked, deal #b{damageAmount} winterhold:Fire damage to your attacker."
     ]
+  },
+  "winterhold:SimonSaysPower": {
+    "NAME": "Simon Says",
+    "DESCRIPTIONS": [
+      "If you deal {damageType} next, gain {strengthAmount} #yStrength. If you don't, lose all #yStrength."
+    ]
   }
 }
