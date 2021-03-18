@@ -8,12 +8,13 @@ import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.cards.RollForArt
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class ColdBurn : AbstractDestructionCard(
     ID, IMG, COST, CardType.ATTACK, CardRarity.UNCOMMON, CardTarget.ENEMY
-) {
+), RollForArt {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
             SpellDamageAction(

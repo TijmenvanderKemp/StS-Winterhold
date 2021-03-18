@@ -9,6 +9,7 @@ import basemod.interfaces.EditRelicsSubscriber
 import basemod.interfaces.EditStringsSubscriber
 import basemod.interfaces.OnStartBattleSubscriber
 import basemod.interfaces.PostInitializeSubscriber
+import basemod.interfaces.PostUpdateSubscriber
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.evacipated.cardcrawl.mod.stslib.Keyword
@@ -30,9 +31,10 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.characters.DestructionMage
+import winterhold.characters.Archmage
 import winterhold.dynamicvariables.ComboVariable
 import winterhold.relics.AbstractWinterholdRelic
+import winterhold.schooldraft.DraftTwoSchoolsOnFloorZeroService
 import winterhold.spelldamage.SpellDamageTracker
 import winterhold.util.IDCheckDontTouchPls
 import winterhold.util.TextureLoader
@@ -43,17 +45,16 @@ import java.util.*
 
 @SpireInitializer
 class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
-    EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber {
-    // ============== /SUBSCRIBE, CREATE THE COLOR_GRAY, INITIALIZE/ =================
+    EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber, PostUpdateSubscriber {
     // =============== LOAD THE CHARACTER =================
     override fun receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + DestructionMage.Enums.DESTRUCTION_MAGE.toString())
+        logger.info("Beginning to edit characters. " + "Add " + Archmage.Enums.ARCHMAGE.toString())
         BaseMod.addCharacter(
-            DestructionMage("the Default", DestructionMage.Enums.DESTRUCTION_MAGE),
-            DESTRUCTION_MAGE_BUTTON, THE_DEFAULT_PORTRAIT, DestructionMage.Enums.DESTRUCTION_MAGE
+            Archmage("the Default", Archmage.Enums.ARCHMAGE),
+            DESTRUCTION_MAGE_BUTTON, THE_DEFAULT_PORTRAIT, Archmage.Enums.ARCHMAGE
         )
         receiveEditPotions()
-        logger.info("Added " + DestructionMage.Enums.DESTRUCTION_MAGE.toString())
+        logger.info("Added " + Archmage.Enums.ARCHMAGE.toString())
     }
 
     // =============== /LOAD THE CHARACTER/ =================
@@ -133,16 +134,6 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         logger.info("Add variables")
         BaseMod.addDynamicVariable(ComboVariable())
         logger.info("Adding cards")
-        // Add the cards
-        // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash
-        // when generating card rewards/shop screen items.
-
-        // This method automatically adds any cards so you don't have to manually load them 1 by 1
-        // For more specific info, including how to exclude cards from being added:
-        // https://github.com/daviscook477/BaseMod/wiki/AutoAdd
-
-        // The ID for this function isn't actually your modid as used for prefixes/by the getModID() method.
-        // It's the mod id you give MTS in ModTheSpire.json - by default your artifact ID in your pom.xml
 
         // ${project.artifactId} from pom.xml
         AutoAdd("Winterhold")
@@ -239,6 +230,12 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         SpellDamageTracker.resetCombo()
     }
 
+    override fun receivePostUpdate() {
+        if (inDraftTwoSchoolsPhase) {
+            DraftTwoSchoolsOnFloorZeroService.doDraftAction()
+        }
+    }
+
     companion object {
         val logger: Logger = LogManager.getLogger(WinterholdMod::class.java.name)
 
@@ -262,42 +259,37 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         //This is for the in-game mod settings panel.
         private const val MODNAME = "Winterhold"
         private const val AUTHOR = "Code by Tijmen. Art by reina."
-        private const val DESCRIPTION = "Play as a mage from the College of Winterhold."
+        private const val DESCRIPTION = "Play as the archmage from the College of Winterhold."
 
         // =============== INPUT TEXTURE LOCATION =================
         // Colors (RGB)
         // Character Color
         val DEFAULT_GRAY: Color = CardHelper.getColor(64.0f, 70.0f, 70.0f)
 
-        // Potion Colors in RGB
-        val PLACEHOLDER_POTION_LIQUID: Color = CardHelper.getColor(209.0f, 53.0f, 18.0f) // Orange-ish Red
-        val PLACEHOLDER_POTION_HYBRID: Color = CardHelper.getColor(255.0f, 230.0f, 230.0f) // Near White
-        val PLACEHOLDER_POTION_SPOTS: Color = CardHelper.getColor(100.0f, 25.0f, 10.0f) // Super Dark Red/Brown
-
         // Card backgrounds - The actual rectangular card.
-        private const val ATTACK_DEFAULT_GRAY = "winterholdResources/images/512/bg_attack_default_gray.png"
-        private const val SKILL_DEFAULT_GRAY = "winterholdResources/images/512/bg_skill_default_gray.png"
-        private const val POWER_DEFAULT_GRAY = "winterholdResources/images/512/bg_power_default_gray.png"
+        private const val ATTACK_DEFAULT_GRAY = "winterholdResources/images/512/bg_attack_destruction.png"
+        private const val SKILL_DEFAULT_GRAY = "winterholdResources/images/512/bg_skill_destruction.png"
+        private const val POWER_DEFAULT_GRAY = "winterholdResources/images/512/bg_power_destruction.png"
         private const val ENERGY_ORB_DEFAULT_GRAY = "winterholdResources/images/512/card_default_gray_orb.png"
         private const val CARD_ENERGY_ORB = "winterholdResources/images/512/card_small_orb.png"
-        private const val ATTACK_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/bg_attack_default_gray.png"
-        private const val SKILL_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/bg_skill_default_gray.png"
-        private const val POWER_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/bg_power_default_gray.png"
+        private const val ATTACK_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/bg_attack_destruction.png"
+        private const val SKILL_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/bg_skill_destruction.png"
+        private const val POWER_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/bg_power_destruction.png"
         private const val ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "winterholdResources/images/1024/card_default_gray_orb.png"
 
         // Character assets
         private const val DESTRUCTION_MAGE_BUTTON = "winterholdResources/images/charSelect/DestructionMageButton.png"
         private const val THE_DEFAULT_PORTRAIT = "winterholdResources/images/charSelect/DefaultCharacterPortraitBG.png"
-        const val THE_DEFAULT_SHOULDER_1 = "winterholdResources/images/char/destructionMage/shoulder.png"
-        const val THE_DEFAULT_SHOULDER_2 = "winterholdResources/images/char/destructionMage/shoulder2.png"
-        const val THE_DEFAULT_CORPSE = "winterholdResources/images/char/destructionMage/corpse.png"
+        const val THE_DEFAULT_SHOULDER_1 = "winterholdResources/images/char/archmage/shoulder.png"
+        const val THE_DEFAULT_SHOULDER_2 = "winterholdResources/images/char/archmage/shoulder2.png"
+        const val THE_DEFAULT_CORPSE = "winterholdResources/images/char/archmage/corpse.png"
 
         //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
         const val BADGE_IMAGE = "winterholdResources/images/Badge.png"
 
         // Atlas and JSON files for the Animations
-        const val THE_DEFAULT_SKELETON_ATLAS = "winterholdResources/images/char/destructionMage/skeleton.atlas"
-        const val THE_DEFAULT_SKELETON_JSON = "winterholdResources/images/char/destructionMage/skeleton.json"
+        const val THE_DEFAULT_SKELETON_ATLAS = "winterholdResources/images/char/archmage/skeleton.atlas"
+        const val THE_DEFAULT_SKELETON_JSON = "winterholdResources/images/char/archmage/skeleton.json"
 
         // =============== MAKE IMAGE PATHS =================
         fun makeCardPath(resourcePath: String): String {
@@ -306,6 +298,10 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
 
         fun makeCardPath(clazz: Class<*>): String {
             return "${modID}Resources/images/cards/${clazz.simpleName}.png"
+        }
+
+        fun makeImagePath(resourcePath: String): String {
+            return "${modID}Resources/images/$resourcePath"
         }
 
         fun makeRelicPath(resourcePath: String): String {
@@ -355,6 +351,8 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         fun makeID(idText: String): String {
             return "$modID:$idText"
         }
+
+        var inDraftTwoSchoolsPhase = false
     }
 
     init {
@@ -362,9 +360,9 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
         BaseMod.subscribe(this)
         modID = ("winterhold")
         logger.info("Done subscribing")
-        logger.info("Creating the color " + DestructionMage.Enums.DESTRUCTION_COLOR.toString())
+        logger.info("Creating the color " + Archmage.Enums.ARCHMAGE_COLOR.toString())
         BaseMod.addColor(
-            DestructionMage.Enums.DESTRUCTION_COLOR, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+            Archmage.Enums.ARCHMAGE_COLOR, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
             DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
             ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
             ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,

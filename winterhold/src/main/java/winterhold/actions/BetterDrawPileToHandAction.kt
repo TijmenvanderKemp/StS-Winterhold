@@ -5,17 +5,17 @@ import com.megacrit.cardcrawl.cards.AbstractCard
 import com.megacrit.cardcrawl.cards.CardGroup
 import com.megacrit.cardcrawl.core.Settings
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
-import java.util.function.Predicate
 
-class BetterDrawPileToHandAction(amountOfCards: Int, cardFilter: Predicate<AbstractCard>) : AbstractGameAction() {
+class BetterDrawPileToHandAction(amountOfCards: Int, isThisAGoodCard: (AbstractCard) -> Boolean) :
+    AbstractGameAction() {
     private val p = AbstractDungeon.player
-    private val cardFilter: Predicate<AbstractCard>
+    private val isThisAGoodCard: (AbstractCard) -> Boolean
 
     init {
         setValues(p, p, amountOfCards)
         actionType = ActionType.CARD_MANIPULATION
         duration = Settings.ACTION_DUR_MED
-        this.cardFilter = cardFilter
+        this.isThisAGoodCard = isThisAGoodCard
     }
 
     override fun update() {
@@ -26,7 +26,7 @@ class BetterDrawPileToHandAction(amountOfCards: Int, cardFilter: Predicate<Abstr
             }
             val tmp = CardGroup(CardGroup.CardGroupType.UNSPECIFIED)
             p.drawPile.group
-                    .filter { cardFilter.test(it) }
+                .filter { isThisAGoodCard(it) }
                     .forEach { tmp.addToRandomSpot(it) }
             if (tmp.isEmpty) {
                 isDone = true

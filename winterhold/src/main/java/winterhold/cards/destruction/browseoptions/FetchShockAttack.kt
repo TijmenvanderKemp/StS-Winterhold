@@ -6,13 +6,14 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.actions.BetterDrawPileToHandAction
+import winterhold.cards.RollForArt
 import winterhold.cards.destruction.AbstractDestructionCard
 import winterhold.spelldamage.SpellDamageTags
 
 @AutoAdd.Ignore
 class FetchShockAttack : AbstractDestructionCard(
-        ID, IMG, -2, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE
-) {
+    ID, IMG, -2, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE
+), RollForArt {
     companion object {
         val ID: String = WinterholdMod.makeID(FetchShockAttack::class.java.simpleName)
         val IMG: String = WinterholdMod.makeCardPath("Skill.png")

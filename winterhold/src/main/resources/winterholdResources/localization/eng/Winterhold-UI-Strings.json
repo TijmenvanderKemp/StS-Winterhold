@@ -3,5 +3,10 @@
     "TEXT": [
       "Choose any number of cards to exhaust."
     ]
+  },
+  "winterhold:ChooseSchool": {
+    "TEXT": [
+      "Choose a school that you specialize in. Card rewards will include cards from this school."
+    ]
   }
 }

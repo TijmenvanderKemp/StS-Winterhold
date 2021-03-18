@@ -1,13 +1,13 @@
 {
-  "winterhold:DestructionMage": {
+  "winterhold:Archmage": {
     "NAMES": [
-      "the Destruction Mage",
-      "the Destruction Mage"
+      "The Archmage",
+      "The Archmage"
     ],
     "TEXT": [
-      "A fiery young mage schooled in the art of destruction magic. NL Harnesses the elements to demolish her enemies.",
-      "NL You channel the elements...",
-      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us,~ ~feisty~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+      "A brilliant archmage that took over when the previous archmage was killed in an explosion. NL Harnesses magical powers to conquer her enemies.",
+      "NL You channel your magic...",
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us,~ ~arcane~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
     ]
   }
 }

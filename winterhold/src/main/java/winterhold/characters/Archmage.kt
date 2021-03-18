@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary.LibraryType
 import com.megacrit.cardcrawl.helpers.FontHelper
 import com.megacrit.cardcrawl.helpers.ScreenShake
 import com.megacrit.cardcrawl.screens.CharSelectInfo
-import com.megacrit.cardcrawl.unlock.UnlockTracker
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import winterhold.WinterholdMod
@@ -25,27 +24,23 @@ import winterhold.cards.destruction.DefendDestruction
 import winterhold.cards.destruction.Firebolt
 import winterhold.cards.destruction.Frostbolt
 import winterhold.cards.destruction.Shockbolt
-import winterhold.relics.ComboTrackerRelic
-import winterhold.relics.FaraldasCharm
 import java.util.*
 
-//Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
-//and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
+class Archmage(name: String, setClass: PlayerClass) : CustomPlayer(
     name, setClass, orbTextures,
-    "winterholdResources/images/char/destructionMage/orb/vfx.png", null,
+    "winterholdResources/images/char/archmage/orb/vfx.png", null,
     SpriterAnimation(
-        "winterholdResources/images/char/destructionMage/Spriter/theDefaultAnimation.scml"
+        "winterholdResources/images/char/archmage/Spriter/theDefaultAnimation.scml"
     )
 ) {
     object Enums {
         @SpireEnum
-        lateinit var DESTRUCTION_MAGE: PlayerClass
+        lateinit var ARCHMAGE: PlayerClass
 
-        @SpireEnum(name = "DEFAULT_DESTRUCTION_COLOR") // These two HAVE to have the same absolutely identical name.
-        lateinit var DESTRUCTION_COLOR: CardColor
+        @SpireEnum(name = "DEFAULT_ARCHMAGE_COLOR") // These two HAVE to have the same absolutely identical name.
+        lateinit var ARCHMAGE_COLOR: CardColor
 
-        @SpireEnum(name = "DEFAULT_DESTRUCTION_COLOR")
+        @SpireEnum(name = "DEFAULT_ARCHMAGE_COLOR")
         var LIBRARY_COLOR: LibraryType? = null
     }
 
@@ -61,7 +56,7 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     object BaseStats {
         const val ENERGY_PER_TURN = 3
-        const val STARTING_HP = 75
+        const val STARTING_HP = 69
         const val MAX_HP = 75
         const val STARTING_GOLD = 99
         const val CARD_DRAW = 5
@@ -76,18 +71,10 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
         )
     }
 
-    override fun getStartingRelics(): ArrayList<String> {
-        val retVal = ArrayList<String>()
-        retVal.add(ComboTrackerRelic.ID)
-        retVal.add(FaraldasCharm.ID)
-
-        UnlockTracker.markRelicAsSeen(ComboTrackerRelic.ID)
-        UnlockTracker.markRelicAsSeen(FaraldasCharm.ID)
-        return retVal
-    }
+    override fun getStartingRelics() = arrayListOf<String>()
 
     override fun doCharSelectScreenSelectEffect() {
-        CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f) // Sound Effect
+        CardCrawlGame.sound.playA("ATTACK_MAGIC_FAST_3", 1.25f) // Sound Effect
         CardCrawlGame.screenShake.shake(
             ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
             false
@@ -106,7 +93,7 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     // Should return the card color enum to be associated with your character.
     override fun getCardColor(): CardColor {
-        return Enums.DESTRUCTION_COLOR
+        return Enums.ARCHMAGE_COLOR
     }
 
     // Should return a color object to be used to color the trail of moving cards
@@ -137,7 +124,7 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     // Should return a new instance of your character, sending name as its name parameter.
     override fun newInstance(): AbstractPlayer {
-        return DestructionMage(name, chosenClass)
+        return Archmage(name, chosenClass)
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
@@ -179,11 +166,11 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
 
 
     companion object {
-        val logger: Logger = LogManager.getLogger(DestructionMage::class.java.name)
+        val logger: Logger = LogManager.getLogger(Archmage::class.java.name)
 
         // =============== CHARACTER ENUMERATORS  =================
         // =============== STRINGS =================
-        private val ID = WinterholdMod.makeID("DestructionMage")
+        private val ID = WinterholdMod.makeID("Archmage")
         private val characterStrings = CardCrawlGame.languagePack.getCharacterString(ID)
         private val NAMES = characterStrings.NAMES
         private val TEXT = characterStrings.TEXT
@@ -191,17 +178,17 @@ class DestructionMage(name: String, setClass: PlayerClass) : CustomPlayer(
         // =============== /STRINGS/ =================
         // =============== TEXTURES OF BIG ENERGY ORB ===============
         val orbTextures = arrayOf(
-            "winterholdResources/images/char/destructionMage/orb/layer1.png",
-            "winterholdResources/images/char/destructionMage/orb/layer2.png",
-            "winterholdResources/images/char/destructionMage/orb/layer3.png",
-            "winterholdResources/images/char/destructionMage/orb/layer4.png",
-            "winterholdResources/images/char/destructionMage/orb/layer5.png",
-            "winterholdResources/images/char/destructionMage/orb/layer6.png",
-            "winterholdResources/images/char/destructionMage/orb/layer1d.png",
-            "winterholdResources/images/char/destructionMage/orb/layer2d.png",
-            "winterholdResources/images/char/destructionMage/orb/layer3d.png",
-            "winterholdResources/images/char/destructionMage/orb/layer4d.png",
-            "winterholdResources/images/char/destructionMage/orb/layer5d.png"
+            "winterholdResources/images/char/archmage/orb/layer1.png",
+            "winterholdResources/images/char/archmage/orb/layer2.png",
+            "winterholdResources/images/char/archmage/orb/layer3.png",
+            "winterholdResources/images/char/archmage/orb/layer4.png",
+            "winterholdResources/images/char/archmage/orb/layer5.png",
+            "winterholdResources/images/char/archmage/orb/layer6.png",
+            "winterholdResources/images/char/archmage/orb/layer1d.png",
+            "winterholdResources/images/char/archmage/orb/layer2d.png",
+            "winterholdResources/images/char/archmage/orb/layer3d.png",
+            "winterholdResources/images/char/archmage/orb/layer4d.png",
+            "winterholdResources/images/char/archmage/orb/layer5d.png"
         )
     }
 

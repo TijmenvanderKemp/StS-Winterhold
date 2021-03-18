@@ -104,5 +104,33 @@
   "winterhold:Frostbite": {
     "NAME": "Frostbite",
     "DESCRIPTION": "Deal !D! winterhold:Frost damage. winterhold:Combo !C!: Apply !M! Weak."
+  },
+  "winterhold:DestructionSchoolChoice": {
+    "NAME": "Destruction",
+    "DESCRIPTION": "Gain 2 Max HP. Gain winterhold:FaraldasCharm."
+  },
+  "winterhold:ConjurationSchoolChoice": {
+    "NAME": "Conjuration",
+    "DESCRIPTION": "Be a Conjuration mage."
+  },
+  "winterhold:IllusionSchoolChoice": {
+    "NAME": "Illusion",
+    "DESCRIPTION": "Be an Illusion mage."
+  },
+  "winterhold:RestorationSchoolChoice": {
+    "NAME": "Restoration",
+    "DESCRIPTION": "Be a Restoration mage."
+  },
+  "winterhold:AlterationSchoolChoice": {
+    "NAME": "Alteration",
+    "DESCRIPTION": "Be an Alteration mage."
+  },
+  "winterhold:EnchantmentSchoolChoice": {
+    "NAME": "Enchantment",
+    "DESCRIPTION": "Be an Enchantment mage."
+  },
+  "winterhold:Fork": {
+    "NAME": "Fork",
+    "DESCRIPTION": "Give em a good stab."
   }
 }

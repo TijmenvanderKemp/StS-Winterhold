@@ -7,12 +7,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.cards.RollForArt
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Firebolt : AbstractDestructionCard(
     ID, IMG, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY
-) {
+), RollForArt {
     // Actions the card should do.
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         AbstractDungeon.actionManager.addToBottom(
