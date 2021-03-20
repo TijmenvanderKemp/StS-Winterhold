@@ -25,9 +25,10 @@ abstract class AbstractHasPortraitImageCard(
     rarity = rarity,
     target = target
 ) {
-    var needsArtRefresh = false
+    private var needsArtRefresh = false
 
     init {
+        @Suppress("LeakingThis")
         when (this) {
             is RollForArt -> {
                 if (CardLibrary.getAllCards() != null && CardLibrary.getAllCards().isNotEmpty()) {

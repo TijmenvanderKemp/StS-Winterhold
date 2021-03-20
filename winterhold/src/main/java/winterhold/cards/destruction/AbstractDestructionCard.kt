@@ -1,7 +1,7 @@
 package winterhold.cards.destruction
 
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractDestructionCard(
@@ -28,7 +28,7 @@ abstract class AbstractDestructionCard(
     initialMagicNumber = magicNumber,
     upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
-    subcolor = SubColor.DESTRUCTION,
+    school = School.DESTRUCTION,
     rarity = rarity,
     target = target
 ) {

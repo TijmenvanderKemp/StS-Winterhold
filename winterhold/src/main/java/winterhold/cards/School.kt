@@ -1,6 +1,6 @@
 package winterhold.cards
 
-enum class SubColor {
+enum class School {
     DESTRUCTION,
     ILLUSION,
     CONJURATION,

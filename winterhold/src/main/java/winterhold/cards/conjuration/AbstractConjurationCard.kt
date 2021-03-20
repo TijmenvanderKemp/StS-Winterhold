@@ -1,7 +1,7 @@
 package winterhold.cards.conjuration
 
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractConjurationCard(
@@ -28,7 +28,7 @@ abstract class AbstractConjurationCard(
     initialMagicNumber = magicNumber,
     upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
-    subcolor = SubColor.CONJURATION,
+    school = School.CONJURATION,
     rarity = rarity,
     target = target
 ) {

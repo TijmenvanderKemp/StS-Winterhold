@@ -4,17 +4,17 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.cards.AbstractWinterholdCard
 import winterhold.cards.RollForArt
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractSchoolChoiceCard(
     specificClass: KClass<out AbstractWinterholdCard>,
-    subcolor: SubColor
+    school: School
 ) : AbstractWinterholdCard(
     specificClass = specificClass,
     cost = -2,
     type = CardType.ATTACK,
-    subcolor = subcolor,
+    school = school,
     rarity = CardRarity.SPECIAL,
     target = CardTarget.NONE
 ), SchoolChoiceCard, RollForArt {

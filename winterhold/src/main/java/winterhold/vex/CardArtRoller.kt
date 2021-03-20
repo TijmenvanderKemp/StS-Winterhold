@@ -16,7 +16,7 @@ import java.util.*
 
 object CardArtRoller {
     private val doneCards: MutableMap<String, TextureAtlas.AtlasRegion> = HashMap()
-    var infos: MutableMap<String, ReskinInfo> = HashMap()
+    private var infos: MutableMap<String, ReskinInfo> = HashMap()
     private val shade = ShaderProgram(Shaders.vertexShaderHSLC, Shaders.fragmentShaderHSLC)
     fun computeCard(c: CustomCard) {
         c.portrait = doneCards.computeIfAbsent(c.cardID) { key: String ->

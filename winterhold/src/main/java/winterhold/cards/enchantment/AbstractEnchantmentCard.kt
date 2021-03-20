@@ -1,7 +1,7 @@
 package winterhold.cards.enchantment
 
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractEnchantmentCard(
@@ -28,7 +28,7 @@ abstract class AbstractEnchantmentCard(
     initialMagicNumber = magicNumber,
     upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
-    subcolor = SubColor.ENCHANTMENT,
+    school = School.ENCHANTMENT,
     rarity = rarity,
     target = target
 ) {

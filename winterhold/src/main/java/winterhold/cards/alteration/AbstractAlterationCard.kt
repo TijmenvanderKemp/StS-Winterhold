@@ -1,7 +1,7 @@
 package winterhold.cards.alteration
 
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractAlterationCard(
@@ -28,7 +28,7 @@ abstract class AbstractAlterationCard(
     initialMagicNumber = magicNumber,
     upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
-    subcolor = SubColor.ALTERATION,
+    school = School.ALTERATION,
     rarity = rarity,
     target = target
 ) {

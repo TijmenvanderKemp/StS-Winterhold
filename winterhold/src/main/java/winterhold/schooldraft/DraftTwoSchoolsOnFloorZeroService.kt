@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import winterhold.WinterholdMod
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import winterhold.patches.CenterGridCardSelectScreen
 import winterhold.schooldraft.cards.AlterationSchoolChoiceCard
 import winterhold.schooldraft.cards.ConjurationSchoolChoiceCard
@@ -28,7 +28,7 @@ object DraftTwoSchoolsOnFloorZeroService {
         IllusionSchoolChoiceCard(),
         RestorationSchoolChoiceCard(),
     )
-    val chosenSchools = mutableListOf<SubColor>()
+    val chosenSchools = mutableListOf<School>()
 
 
     fun doDraftAction() {
@@ -40,7 +40,7 @@ object DraftTwoSchoolsOnFloorZeroService {
             eliminateSchoolsThatWereNotChosenFromCardPool()
             println("Chose: $chosenSchools")
             println(
-                """Cardpool: 
+                """Card pool: 
                 |${AbstractDungeon.srcCommonCardPool}
                 |${AbstractDungeon.srcUncommonCardPool}
                 |${AbstractDungeon.srcRareCardPool}
@@ -65,9 +65,9 @@ object DraftTwoSchoolsOnFloorZeroService {
     }
 
     private fun eliminateSchoolsThatWereNotChosenFromCardPool() {
-        AbstractDungeon.srcCommonCardPool.group.removeIf { it is AbstractWinterholdCard && it.subcolor !in chosenSchools }
-        AbstractDungeon.srcUncommonCardPool.group.removeIf { it is AbstractWinterholdCard && it.subcolor !in chosenSchools }
-        AbstractDungeon.srcRareCardPool.group.removeIf { it is AbstractWinterholdCard && it.subcolor !in chosenSchools }
+        AbstractDungeon.srcCommonCardPool.group.removeIf { it is AbstractWinterholdCard && it.school !in chosenSchools }
+        AbstractDungeon.srcUncommonCardPool.group.removeIf { it is AbstractWinterholdCard && it.school !in chosenSchools }
+        AbstractDungeon.srcRareCardPool.group.removeIf { it is AbstractWinterholdCard && it.school !in chosenSchools }
     }
 
     private fun makeSchoolsReadyToShow() {
@@ -96,7 +96,7 @@ object DraftTwoSchoolsOnFloorZeroService {
 
     private fun processSchoolChoice() {
         val choice = AbstractDungeon.gridSelectScreen.selectedCards[0]!! as AbstractWinterholdCard
-        chosenSchools.add(choice.subcolor)
+        chosenSchools.add(choice.school)
         (choice as SchoolChoiceCard).onPick()
         AbstractDungeon.gridSelectScreen.selectedCards.clear()
     }

@@ -201,7 +201,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
             UIStrings::class.java,
             modID + "Resources/localization/eng/Winterhold-UI-Strings.json"
         )
-        logger.info("Done edittting strings")
+        logger.info("Done editing strings")
     }
 
     // ================ /LOAD THE TEXT/ ===================

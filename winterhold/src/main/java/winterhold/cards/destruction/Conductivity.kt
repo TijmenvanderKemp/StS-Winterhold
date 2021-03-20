@@ -16,7 +16,7 @@ class Conductivity : AbstractDestructionCard(
     target = CardTarget.NONE
 ), CustomUpgrade, RollForArt {
 
-    var increasedShockDamage = 0
+    private var increasedShockDamage = 0
 
     override fun use(p: AbstractPlayer, m: AbstractMonster?) {
         addToBot(ApplyPowerAction(p, p, ConductivityPower(p, increasedShockDamage)))

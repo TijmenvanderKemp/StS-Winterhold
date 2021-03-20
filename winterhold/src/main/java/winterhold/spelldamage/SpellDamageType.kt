@@ -7,7 +7,8 @@ const val SPECIAL_DAMAGE_TYPE = "A special damage type. Look for cards and relic
 
 enum class SpellDamageType(
     val prettyName: String,
-    val cardDescriptionName: String,
+    // Id of the keyword as it's used in localisation
+    private val cardDescriptionName: String,
     val color: Color,
     val description: String
 ) {

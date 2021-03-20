@@ -1,7 +1,7 @@
 package winterhold.cards.illusion
 
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractIllusionCard(
@@ -28,7 +28,7 @@ abstract class AbstractIllusionCard(
     initialMagicNumber = magicNumber,
     upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
-    subcolor = SubColor.ILLUSION,
+    school = School.ILLUSION,
     rarity = rarity,
     target = target
 ) {

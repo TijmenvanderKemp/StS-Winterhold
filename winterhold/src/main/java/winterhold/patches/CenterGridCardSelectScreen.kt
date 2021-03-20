@@ -8,16 +8,18 @@ object CenterGridCardSelectScreen {
     var centerGridSelect = false
     private var save_isJustForConfirming = false
 
+    @Suppress("unused")
     @JvmStatic
-    fun Prefix(__instance: GridCardSelectScreen) {
+    fun prefix(__instance: GridCardSelectScreen) {
         save_isJustForConfirming = __instance.isJustForConfirming
         if (centerGridSelect) {
             __instance.isJustForConfirming = true
         }
     }
 
+    @Suppress("unused")
     @JvmStatic
-    fun Postfix(__instance: GridCardSelectScreen) {
+    fun postfix(__instance: GridCardSelectScreen) {
         __instance.isJustForConfirming = save_isJustForConfirming
     }
 }

@@ -16,7 +16,7 @@ import winterhold.coloredkeywords.KeywordColorer
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.TextureLoader
 
-class SingePower(owner: AbstractCreature, val source: AbstractCreature, singeAmt: Int) : AbstractPower() {
+class SingePower(owner: AbstractCreature, private val source: AbstractCreature, singeAmt: Int) : AbstractPower() {
     companion object {
         val POWER_ID = makeID(SingePower::class.java.simpleName)
         private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID)

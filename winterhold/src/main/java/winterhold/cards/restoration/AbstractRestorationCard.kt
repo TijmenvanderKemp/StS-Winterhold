@@ -1,7 +1,7 @@
 package winterhold.cards.restoration
 
 import winterhold.cards.AbstractWinterholdCard
-import winterhold.cards.SubColor
+import winterhold.cards.School
 import kotlin.reflect.KClass
 
 abstract class AbstractRestorationCard(
@@ -28,7 +28,7 @@ abstract class AbstractRestorationCard(
     initialMagicNumber = magicNumber,
     upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
-    subcolor = SubColor.RESTORATION,
+    school = School.RESTORATION,
     rarity = rarity,
     target = target
 ) {

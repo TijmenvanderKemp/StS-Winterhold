@@ -18,7 +18,7 @@ abstract class AbstractWinterholdCard(
     val initialMagicNumber: Int? = null,
     val upgradeMagicNumberBy: Int? = null,
     val type: CardType,
-    val subcolor: SubColor,
+    val school: School,
     val rarity: CardRarity,
     val target: CardTarget,
     val cardStrings: CardStrings = CardCrawlGame.languagePack.getCardStrings(WinterholdMod.makeID(specificClass.simpleName!!)),
@@ -47,7 +47,7 @@ abstract class AbstractWinterholdCard(
         }
     }
 
-    fun useUpgradeDescription() {
+    private fun useUpgradeDescription() {
         rawDescription = cardStrings.UPGRADE_DESCRIPTION
         initializeDescription()
     }
