@@ -10,14 +10,22 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.powers.VulnerablePower
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect
-import winterhold.WinterholdMod
 import winterhold.actions.ComboAction
 import winterhold.actions.SpellDamageRandomEnemyAction
+import winterhold.cards.CustomUpgrade
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.stillFightingMonsters
 
-class Sparks : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY) {
+class Sparks : AbstractDestructionCard(
+    specificClass = Sparks::class,
+    cost = 0,
+    damage = 3,
+    magicNumber = 1,
+    type = CardType.ATTACK,
+    rarity = CardRarity.COMMON,
+    target = CardTarget.ENEMY
+), CustomUpgrade {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(SFXAction("THUNDERCLAP", 0.05F))
         AbstractDungeon.getCurrRoom().monsters.stillFightingMonsters.forEach {
@@ -37,30 +45,18 @@ class Sparks : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarit
         )
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
+    override fun doCustomUpgrade() {
             upgradeComboToNewNumber(UPGRADE_NEW_COMBO)
-        }
     }
 
     companion object {
-        val ID: String = WinterholdMod.makeID(Sparks::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath(Sparks::class.java)
-
-        private const val COST = 0
-        private const val DAMAGE = 3
         private const val COMBO = 3
         private const val UPGRADE_NEW_COMBO = 2
-        private const val MAGIC_NUMBER = 1
     }
 
     init {
-        baseDamage = DAMAGE
         baseComboRequirement = COMBO
         comboRequirement = COMBO
-        baseMagicNumber = MAGIC_NUMBER
-        magicNumber = MAGIC_NUMBER
         tags.add(SpellDamageTags.DEALS_SHOCK_DAMAGE)
     }
 }

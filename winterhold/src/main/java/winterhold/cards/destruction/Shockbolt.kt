@@ -9,13 +9,19 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.powers.VulnerablePower
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect
-import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Shockbolt : AbstractDestructionCard(
-    ID, IMG, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY
+    specificClass = Shockbolt::class,
+    cost = 1,
+    damage = 5,
+    magicNumber = 1,
+    upgradeMagicNumberBy = 1,
+    type = CardType.ATTACK,
+    rarity = CardRarity.BASIC,
+    target = CardTarget.ENEMY,
 ) {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
@@ -36,27 +42,7 @@ class Shockbolt : AbstractDestructionCard(
         )
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC_NUMBER)
-        }
-    }
-
-    companion object {
-        val ID: String = WinterholdMod.makeID(Shockbolt::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath(Shockbolt::class.java)
-
-        private const val COST = 1
-        private const val DAMAGE = 5
-        private const val MAGIC_NUMBER = 1
-        private const val UPGRADE_PLUS_MAGIC_NUMBER = 1
-    }
-
     init {
-        baseMagicNumber = MAGIC_NUMBER
-        magicNumber = MAGIC_NUMBER
-        baseDamage = DAMAGE
         tags.add(SpellDamageTags.DEALS_SHOCK_DAMAGE)
     }
 }

@@ -7,14 +7,19 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.vfx.combat.LightningEffect
-import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAllEnemiesAction
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 import winterhold.util.stillFightingMonsters
 
 class ChainLightning : AbstractDestructionCard(
-    ID, IMG, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ALL_ENEMY
+    specificClass = ChainLightning::class,
+    cost = 1,
+    damage = 8,
+    upgradeDamageBy = 3,
+    type = CardType.ATTACK,
+    rarity = CardRarity.COMMON,
+    target = CardTarget.ALL_ENEMY
 ) {
     override fun use(p: AbstractPlayer, m: AbstractMonster?) {
         addToBot(SFXAction("THUNDERCLAP", 0.05F))
@@ -33,26 +38,7 @@ class ChainLightning : AbstractDestructionCard(
         )
     }
 
-    //Upgraded stats.
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            upgradeDamage(UPGRADE_PLUS_DAMAGE)
-        }
-    }
-
-    companion object {
-        val ID: String = WinterholdMod.makeID(ChainLightning::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath(ChainLightning::class.java)
-
-        private const val COST = 1
-        private const val DAMAGE = 8
-        private const val UPGRADE_PLUS_DAMAGE = 3
-    }
-
-    // /STAT DECLARATION/
     init {
-        baseDamage = DAMAGE
         isMultiDamage = true
         tags.add(SpellDamageTags.DEALS_SHOCK_DAMAGE)
     }

@@ -3,31 +3,23 @@ package winterhold.cards.destruction
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import winterhold.WinterholdMod
+import winterhold.cards.CustomUpgrade
+import winterhold.cards.RollForArt
 import winterhold.powers.SimonSaysPower
 
-class SimonSays : AbstractDestructionCard(ID, IMG, COST, CardType.POWER, CardRarity.RARE, CardTarget.NONE) {
+class SimonSays : AbstractDestructionCard(
+    specificClass = SimonSays::class,
+    cost = 1,
+    magicNumber = 1,
+    type = CardType.POWER,
+    rarity = CardRarity.RARE,
+    target = CardTarget.NONE,
+), CustomUpgrade, RollForArt {
     override fun use(p: AbstractPlayer, m: AbstractMonster?) {
         addToBot(ApplyPowerAction(p, p, SimonSaysPower(p, stackAmount = magicNumber)))
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            this.isInnate = true
-        }
-    }
-
-    companion object {
-        val ID: String = WinterholdMod.makeID(SimonSays::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Power.png")
-
-        private const val COST = 1
-        private const val MAGIC_NUMBER = 1
-    }
-
-    init {
-        magicNumber = MAGIC_NUMBER
-        baseMagicNumber = MAGIC_NUMBER
+    override fun doCustomUpgrade() {
+        this.isInnate = true
     }
 }

@@ -5,14 +5,22 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.cards.RollForArt
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
 class Frostbolt : AbstractDestructionCard(
-    ID, IMG, COST, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY
-) {
+    specificClass = Frostbolt::class,
+    cost = 1,
+    damage = 5,
+    upgradeDamageBy = 2,
+    block = 5,
+    upgradeBlockBy = 2,
+    type = CardType.ATTACK,
+    rarity = CardRarity.BASIC,
+    target = CardTarget.ENEMY
+), RollForArt {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
             SpellDamageAction(
@@ -27,29 +35,7 @@ class Frostbolt : AbstractDestructionCard(
         )
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            upgradeDamage(UPGRADE_PLUS_DAMAGE)
-            upgradeBlock(UPGRADE_PLUS_BLOCK)
-        }
-    }
-
-    companion object {
-        val ID: String = WinterholdMod.makeID(Frostbolt::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
-
-        private const val COST = 1
-        private const val DAMAGE = 5
-        private const val UPGRADE_PLUS_DAMAGE = 2
-        private const val BLOCK = 5
-        private const val UPGRADE_PLUS_BLOCK = 2
-    }
-
-    // /STAT DECLARATION/
     init {
-        baseDamage = DAMAGE
-        baseBlock = BLOCK
         tags.add(SpellDamageTags.DEALS_FROST_DAMAGE)
     }
 }

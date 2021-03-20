@@ -5,7 +5,7 @@ import basemod.abstracts.CustomCard
 abstract class AbstractComboRequirementCard(
     id: String,
     name: String,
-    img: String,
+    img: String?,
     cost: Int,
     rawDescription: String,
     type: CardType,

@@ -7,14 +7,21 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.vfx.combat.FireballEffect
-import winterhold.WinterholdMod
 import winterhold.actions.SpellDamageAction
+import winterhold.cards.RollForArt
 import winterhold.spelldamage.SpellDamageTags.DEALS_FIRE_DAMAGE
 import winterhold.spelldamage.SpellDamageType
 
 class Fireball : AbstractDestructionCard(
-    ID, IMG, COST, CardType.ATTACK, CardRarity.RARE, CardTarget.ENEMY
-) {
+    specificClass = Fireball::class,
+    cost = 2,
+    damage = 36,
+    upgradeDamageBy = 6,
+    magicNumber = 6,
+    type = CardType.ATTACK,
+    rarity = CardRarity.RARE,
+    target = CardTarget.ENEMY
+), RollForArt {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
             SpellDamageAction(
@@ -45,27 +52,7 @@ class Fireball : AbstractDestructionCard(
         )
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            upgradeDamage(UPGRADE_PLUS_DAMAGE)
-        }
-    }
-
-    companion object {
-        val ID: String = WinterholdMod.makeID(Fireball::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
-
-        private const val COST = 2
-        private const val DAMAGE = 36
-        private const val UPGRADE_PLUS_DAMAGE = 6
-        private const val MAGIC_NUMBER = 6
-    }
-
     init {
-        baseMagicNumber = MAGIC_NUMBER
-        magicNumber = MAGIC_NUMBER
-        baseDamage = DAMAGE
         tags.add(DEALS_FIRE_DAMAGE)
     }
 }

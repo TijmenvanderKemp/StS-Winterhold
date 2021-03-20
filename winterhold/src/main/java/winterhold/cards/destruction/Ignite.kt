@@ -4,13 +4,21 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import winterhold.WinterholdMod
 import winterhold.actions.ComboAction
 import winterhold.actions.SpellDamageAction
+import winterhold.cards.CustomUpgrade
+import winterhold.cards.RollForArt
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
-class Ignite : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY) {
+class Ignite : AbstractDestructionCard(
+    specificClass = Ignite::class,
+    cost = 0,
+    damage = 3,
+    type = CardType.ATTACK,
+    rarity = CardRarity.COMMON,
+    target = CardTarget.ENEMY
+), CustomUpgrade, RollForArt {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
             SpellDamageAction(
@@ -32,25 +40,16 @@ class Ignite : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarit
         )
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            upgradeComboToNewNumber(UPGRADE_NEW_COMBO)
-        }
+    override fun doCustomUpgrade() {
+        upgradeComboToNewNumber(UPGRADE_NEW_COMBO)
     }
 
     companion object {
-        val ID: String = WinterholdMod.makeID(Ignite::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
-
-        private const val COST = 0
-        private const val DAMAGE = 3
         private const val COMBO = 3
         private const val UPGRADE_NEW_COMBO = 2
     }
 
     init {
-        baseDamage = DAMAGE
         baseComboRequirement = COMBO
         comboRequirement = COMBO
         tags.add(SpellDamageTags.DEALS_FIRE_DAMAGE)

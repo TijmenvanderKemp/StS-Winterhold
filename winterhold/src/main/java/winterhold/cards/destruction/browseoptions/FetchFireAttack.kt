@@ -4,7 +4,6 @@ import basemod.AutoAdd
 import com.megacrit.cardcrawl.cards.AbstractCard
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import winterhold.WinterholdMod
 import winterhold.actions.BetterDrawPileToHandAction
 import winterhold.cards.RollForArt
 import winterhold.cards.destruction.AbstractDestructionCard
@@ -12,13 +11,12 @@ import winterhold.spelldamage.SpellDamageTags
 
 @AutoAdd.Ignore
 class FetchFireAttack : AbstractDestructionCard(
-    ID, IMG, -2, CardType.SKILL, CardRarity.SPECIAL, CardTarget.NONE
+    specificClass = FetchFireAttack::class,
+    cost = -2,
+    type = CardType.SKILL,
+    rarity = CardRarity.SPECIAL,
+    target = CardTarget.NONE
 ), RollForArt {
-    companion object {
-        val ID: String = WinterholdMod.makeID(FetchFireAttack::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Skill.png")
-    }
-
     override fun use(p: AbstractPlayer, m: AbstractMonster?) {
         onChoseThisOption()
     }
@@ -27,9 +25,7 @@ class FetchFireAttack : AbstractDestructionCard(
         addToBot(BetterDrawPileToHandAction(1) { it.hasTag(SpellDamageTags.DEALS_FIRE_DAMAGE) })
     }
 
-    override fun upgrade() {
-        // Card can never be obtained and therefore doesn't need to be upgraded
-    }
+    override fun canUpgrade() = false
 
     override fun makeCopy(): AbstractCard {
         return FetchFireAttack()

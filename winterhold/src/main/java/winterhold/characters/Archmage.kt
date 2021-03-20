@@ -65,10 +65,11 @@ class Archmage(name: String, setClass: PlayerClass) : CustomPlayer(
 
     override fun getStartingDeck(): ArrayList<String> {
         logger.info("Begin loading starter Deck Strings")
-        return arrayListOf(
-            Firebolt.ID, Firebolt.ID, Firebolt.ID, Firebolt.ID, Shockbolt.ID,
-            Frostbolt.ID, DefendDestruction.ID, DefendDestruction.ID, DefendDestruction.ID, DefendDestruction.ID
+        val arrayListOf = arrayListOf(
+            Firebolt::class, Firebolt::class, Firebolt::class, Firebolt::class, Shockbolt::class,
+            Frostbolt::class, DefendDestruction::class, DefendDestruction::class, DefendDestruction::class, DefendDestruction::class
         )
+        return arrayListOf(*arrayListOf.map { it.simpleName!! }.toTypedArray())
     }
 
     override fun getStartingRelics() = arrayListOf<String>()

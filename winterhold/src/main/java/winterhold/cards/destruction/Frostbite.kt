@@ -6,13 +6,22 @@ import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import com.megacrit.cardcrawl.powers.WeakPower
-import winterhold.WinterholdMod
 import winterhold.actions.ComboAction
 import winterhold.actions.SpellDamageAction
+import winterhold.cards.CustomUpgrade
+import winterhold.cards.RollForArt
 import winterhold.spelldamage.SpellDamageTags
 import winterhold.spelldamage.SpellDamageType
 
-class Frostbite : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY) {
+class Frostbite : AbstractDestructionCard(
+    specificClass = Frostbite::class,
+    cost = 0,
+    damage = 3,
+    magicNumber = 1,
+    type = CardType.ATTACK,
+    rarity = CardRarity.COMMON,
+    target = CardTarget.ENEMY
+), CustomUpgrade, RollForArt {
     override fun use(p: AbstractPlayer, m: AbstractMonster) {
         addToBot(
             SpellDamageAction(
@@ -29,30 +38,18 @@ class Frostbite : AbstractDestructionCard(ID, IMG, COST, CardType.ATTACK, CardRa
         )
     }
 
-    override fun upgrade() {
-        if (!upgraded) {
-            upgradeName()
-            upgradeComboToNewNumber(UPGRADE_NEW_COMBO)
-        }
+    override fun doCustomUpgrade() {
+        upgradeComboToNewNumber(UPGRADE_NEW_COMBO)
     }
 
     companion object {
-        val ID: String = WinterholdMod.makeID(Frostbite::class.java.simpleName)
-        val IMG: String = WinterholdMod.makeCardPath("Attack.png")
-
-        private const val COST = 0
-        private const val DAMAGE = 3
         private const val COMBO = 3
         private const val UPGRADE_NEW_COMBO = 2
-        private const val MAGIC_NUMBER = 1
     }
 
     init {
-        baseDamage = DAMAGE
         baseComboRequirement = COMBO
         comboRequirement = COMBO
-        baseMagicNumber = MAGIC_NUMBER
-        magicNumber = MAGIC_NUMBER
         tags.add(SpellDamageTags.DEALS_FROST_DAMAGE)
     }
 }

@@ -2,18 +2,31 @@ package winterhold.cards.destruction
 
 import winterhold.cards.AbstractWinterholdCard
 import winterhold.cards.SubColor
+import kotlin.reflect.KClass
 
 abstract class AbstractDestructionCard(
-    id: String,
-    img: String,
+    specificClass: KClass<out AbstractWinterholdCard>,
     cost: Int,
+    upgradeCostTo: Int? = null,
+    damage: Int? = null,
+    upgradeDamageBy: Int? = null,
+    block: Int? = null,
+    upgradeBlockBy: Int? = null,
+    magicNumber: Int? = null,
+    upgradeMagicNumberBy: Int? = null,
     type: CardType,
     rarity: CardRarity,
     target: CardTarget
 ) : AbstractWinterholdCard(
-    id = id,
-    img = img,
+    specificClass = specificClass,
     cost = cost,
+    upgradeCostTo = upgradeCostTo,
+    initialDamage = damage,
+    upgradeDamageBy = upgradeDamageBy,
+    initialBlock = block,
+    upgradeBlockBy = upgradeBlockBy,
+    initialMagicNumber = magicNumber,
+    upgradeMagicNumberBy = upgradeMagicNumberBy,
     type = type,
     subcolor = SubColor.DESTRUCTION,
     rarity = rarity,

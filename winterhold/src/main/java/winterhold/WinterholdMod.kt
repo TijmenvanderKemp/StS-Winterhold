@@ -41,6 +41,7 @@ import winterhold.util.TextureLoader
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import java.util.*
+import kotlin.reflect.KClass
 
 
 @SpireInitializer
@@ -50,7 +51,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
     override fun receiveEditCharacters() {
         logger.info("Beginning to edit characters. " + "Add " + Archmage.Enums.ARCHMAGE.toString())
         BaseMod.addCharacter(
-            Archmage("the Default", Archmage.Enums.ARCHMAGE),
+            Archmage("The Archmage", Archmage.Enums.ARCHMAGE),
             DESTRUCTION_MAGE_BUTTON, THE_DEFAULT_PORTRAIT, Archmage.Enums.ARCHMAGE
         )
         receiveEditPotions()
@@ -296,7 +297,7 @@ class WinterholdMod : EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubs
             return "${modID}Resources/images/cards/$resourcePath"
         }
 
-        fun makeCardPath(clazz: Class<*>): String {
+        fun makeCardPath(clazz: KClass<*>): String {
             return "${modID}Resources/images/cards/${clazz.simpleName}.png"
         }
 

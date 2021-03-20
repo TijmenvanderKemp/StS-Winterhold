@@ -7,7 +7,7 @@ import winterhold.spelldamage.SpellDamageType
 abstract class AbstractKeywordColorerCard(
     id: String,
     name: String,
-    img: String,
+    img: String?,
     cost: Int,
     rawDescription: String,
     type: CardType,

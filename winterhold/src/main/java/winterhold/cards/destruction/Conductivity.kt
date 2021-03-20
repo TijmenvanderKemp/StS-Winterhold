@@ -4,21 +4,22 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import winterhold.WinterholdMod
+import winterhold.cards.CustomUpgrade
+import winterhold.cards.RollForArt
 import winterhold.powers.ConductivityPower
 
 class Conductivity : AbstractDestructionCard(
-    ID, IMG, COST, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE
-) {
+    specificClass = Conductivity::class,
+    cost = 0,
+    type = CardType.SKILL,
+    rarity = CardRarity.UNCOMMON,
+    target = CardTarget.NONE
+), CustomUpgrade, RollForArt {
+
+    var increasedShockDamage = 0
 
     override fun use(p: AbstractPlayer, m: AbstractMonster?) {
-        addToBot(ApplyPowerAction(p, p, ConductivityPower(p, if (upgraded) 2 else 0)))
-    }
-
-    override fun upgrade() {
-        if (!upgraded) {
-            useUpgradeDescription()
-            upgradeName()
-        }
+        addToBot(ApplyPowerAction(p, p, ConductivityPower(p, increasedShockDamage)))
     }
 
     companion object {
@@ -26,5 +27,9 @@ class Conductivity : AbstractDestructionCard(
         val IMG: String = WinterholdMod.makeCardPath("Power.png")
 
         private const val COST = 0
+    }
+
+    override fun doCustomUpgrade() {
+        increasedShockDamage = 2
     }
 }

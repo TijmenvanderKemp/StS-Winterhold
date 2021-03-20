@@ -7,7 +7,7 @@ import winterhold.vex.CardArtRoller
 abstract class AbstractHasPortraitImageCard(
     id: String,
     name: String,
-    img: String,
+    img: String?,
     cost: Int,
     rawDescription: String,
     type: CardType,
@@ -28,16 +28,19 @@ abstract class AbstractHasPortraitImageCard(
     var needsArtRefresh = false
 
     init {
-        if (this is RollForArt) {
-            if (CardLibrary.getAllCards() != null && CardLibrary.getAllCards().isNotEmpty()) {
-                CardArtRoller.computeCard(this)
-            } else {
-                needsArtRefresh = true
+        when (this) {
+            is RollForArt -> {
+                if (CardLibrary.getAllCards() != null && CardLibrary.getAllCards().isNotEmpty()) {
+                    CardArtRoller.computeCard(this)
+                } else {
+                    needsArtRefresh = true
+                }
             }
+
         }
     }
 
-    override fun getPortraitImage(): Texture = when (this) {
+    override fun getPortraitImage(): Texture? = when (this) {
         is RollForArt -> getRolledPortrait(this)
         else -> super.getPortraitImage()
     }
