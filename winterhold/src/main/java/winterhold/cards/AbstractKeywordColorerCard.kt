@@ -5,7 +5,7 @@ import winterhold.coloredkeywords.KeywordColorer.colorKeywords
 import winterhold.spelldamage.SpellDamageType
 
 abstract class AbstractKeywordColorerCard(
-    id: String,
+    val cardId: String,
     name: String,
     img: String?,
     cost: Int,
@@ -15,7 +15,7 @@ abstract class AbstractKeywordColorerCard(
     rarity: CardRarity,
     target: CardTarget
 ) : AbstractComboRequirementCard(
-    id,
+    cardId,
     name.colorKeywords(),
     img,
     cost,
@@ -34,6 +34,9 @@ abstract class AbstractKeywordColorerCard(
     }
 
     override fun initializeDescription() {
+        if (rawDescription == null) {
+            throw NullPointerException("rawDescription of card $cardId is null")
+        }
         rawDescription = rawDescription.colorKeywords()
         super.initializeDescription()
     }

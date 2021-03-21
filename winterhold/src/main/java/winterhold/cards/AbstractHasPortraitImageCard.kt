@@ -15,7 +15,7 @@ abstract class AbstractHasPortraitImageCard(
     rarity: CardRarity,
     target: CardTarget
 ) : AbstractKeywordColorerCard(
-    id = id,
+    cardId = id,
     name = name,
     img = img,
     cost = cost,
