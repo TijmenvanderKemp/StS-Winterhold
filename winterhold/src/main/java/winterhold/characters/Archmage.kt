@@ -48,9 +48,17 @@ class Archmage(name: String, setClass: PlayerClass) : CustomPlayer(
     // Starting description and loadout
     override fun getLoadout(): CharSelectInfo {
         return CharSelectInfo(
-            NAMES[0], TEXT[0],
-            BaseStats.STARTING_HP, BaseStats.MAX_HP, BaseStats.ORB_SLOTS, BaseStats.STARTING_GOLD, BaseStats.CARD_DRAW, this, startingRelics,
-            startingDeck, false
+            NAMES[0],
+            TEXT[0],
+            BaseStats.STARTING_HP,
+            BaseStats.MAX_HP,
+            BaseStats.ORB_SLOTS,
+            BaseStats.STARTING_GOLD,
+            BaseStats.CARD_DRAW,
+            this,
+            startingRelics,
+            startingDeck,
+            false
         )
     }
 
@@ -66,10 +74,18 @@ class Archmage(name: String, setClass: PlayerClass) : CustomPlayer(
     override fun getStartingDeck(): ArrayList<String> {
         logger.info("Begin loading starter Deck Strings")
         val arrayListOf = arrayListOf(
-            Firebolt::class, Firebolt::class, Firebolt::class, Firebolt::class, Shockbolt::class,
-            Frostbolt::class, DefendDestruction::class, DefendDestruction::class, DefendDestruction::class, DefendDestruction::class
+            Firebolt::class,
+            Firebolt::class,
+            Firebolt::class,
+            Firebolt::class,
+            Shockbolt::class,
+            Frostbolt::class,
+            DefendDestruction::class,
+            DefendDestruction::class,
+            DefendDestruction::class,
+            DefendDestruction::class
         )
-        return arrayListOf(*arrayListOf.map { it.simpleName!! }.toTypedArray())
+        return arrayListOf(*arrayListOf.map { it.simpleName!! }.map { WinterholdMod.makeID(it) }.toTypedArray())
     }
 
     override fun getStartingRelics() = arrayListOf<String>()
@@ -163,7 +179,6 @@ class Archmage(name: String, setClass: PlayerClass) : CustomPlayer(
     override fun getVampireText(): String {
         return TEXT[2]
     }
-
 
 
     companion object {

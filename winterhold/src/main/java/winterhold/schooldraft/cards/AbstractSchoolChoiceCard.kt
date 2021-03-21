@@ -13,7 +13,8 @@ abstract class AbstractSchoolChoiceCard(
 ) : AbstractWinterholdCard(
     specificClass = specificClass,
     cost = -2,
-    type = CardType.ATTACK,
+    // Can't be attack when rolling for card art because Eviscerate cares about the current dungeon room which is null
+    type = CardType.SKILL,
     school = school,
     rarity = CardRarity.SPECIAL,
     target = CardTarget.NONE
