@@ -31,23 +31,4 @@ abstract class AbstractEnchantmentCard(
     school = School.ENCHANTMENT,
     rarity = rarity,
     target = target
-) {
-    init {
-        when (type) {
-            CardType.ATTACK -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_attack_enchantment.png",
-                "winterholdResources/images/1024/bg_attack_enchantment.png",
-            )
-            CardType.SKILL -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_skill_enchantment.png",
-                "winterholdResources/images/1024/bg_skill_enchantment.png",
-            )
-            CardType.POWER -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_power_enchantment.png",
-                "winterholdResources/images/1024/bg_power_enchantment.png",
-            )
-            else -> { /* Default background options are fine */
-            }
-        }
-    }
-}
+)

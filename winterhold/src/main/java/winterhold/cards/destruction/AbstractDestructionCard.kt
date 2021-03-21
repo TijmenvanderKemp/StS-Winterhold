@@ -31,23 +31,4 @@ abstract class AbstractDestructionCard(
     school = School.DESTRUCTION,
     rarity = rarity,
     target = target
-) {
-    init {
-        when (type) {
-            CardType.ATTACK -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_attack_destruction.png",
-                "winterholdResources/images/1024/bg_attack_destruction.png",
-            )
-            CardType.SKILL -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_skill_destruction.png",
-                "winterholdResources/images/1024/bg_skill_destruction.png",
-            )
-            CardType.POWER -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_power_destruction.png",
-                "winterholdResources/images/1024/bg_power_destruction.png",
-            )
-            else -> { /* Default background options are fine */
-            }
-        }
-    }
-}
+)

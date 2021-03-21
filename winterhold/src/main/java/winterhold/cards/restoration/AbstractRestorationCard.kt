@@ -31,23 +31,4 @@ abstract class AbstractRestorationCard(
     school = School.RESTORATION,
     rarity = rarity,
     target = target
-) {
-    init {
-        when (type) {
-            CardType.ATTACK -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_attack_restoration.png",
-                "winterholdResources/images/1024/bg_attack_restoration.png",
-            )
-            CardType.SKILL -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_skill_restoration.png",
-                "winterholdResources/images/1024/bg_skill_restoration.png",
-            )
-            CardType.POWER -> setBackgroundTexture(
-                "winterholdResources/images/512/bg_power_restoration.png",
-                "winterholdResources/images/1024/bg_power_restoration.png",
-            )
-            else -> { /* Default background options are fine */
-            }
-        }
-    }
-}
+)

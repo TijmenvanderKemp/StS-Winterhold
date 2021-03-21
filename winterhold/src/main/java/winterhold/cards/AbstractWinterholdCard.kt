@@ -35,6 +35,11 @@ abstract class AbstractWinterholdCard(
     target = target
 ) {
     init {
+        setBaseValues()
+        setBackground()
+    }
+
+    private fun setBaseValues() {
         if (initialDamage != null) {
             baseDamage = initialDamage
         }
@@ -45,6 +50,14 @@ abstract class AbstractWinterholdCard(
             magicNumber = initialMagicNumber
             baseMagicNumber = initialMagicNumber
         }
+    }
+
+    private fun setBackground() {
+        if (type !in listOf(CardType.SKILL, CardType.ATTACK, CardType.POWER)) {
+            return
+        }
+        val (backgroundSmallImg, backgroundLargeImg) = CardBackgroundHelper.getBackgrounds(school, type)
+        setBackgroundTexture(backgroundSmallImg, backgroundLargeImg)
     }
 
     private fun useUpgradeDescription() {
